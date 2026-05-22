@@ -39,12 +39,12 @@ self.addEventListener('activate', event => {
     self.clients.claim();
 });
 
-// Fetch - brandDatabase.json UVIJEK s mreže, ostalo iz cachea
+// Fetch - admin.html i brandDatabase.json UVIJEK s mreže, ostalo iz cachea
 self.addEventListener('fetch', event => {
     const url = new URL(event.request.url);
 
-    // brandDatabase.json - uvijek network, nikad cache
-    if (url.pathname.endsWith('brandDatabase.json')) {
+    // admin.html i brandDatabase.json - uvijek network, nikad cache
+    if (url.pathname.endsWith('admin.html') || url.pathname.endsWith('brandDatabase.json')) {
         event.respondWith(
             fetch(event.request, { cache: 'no-store' })
                 .catch(() => caches.match(event.request))
