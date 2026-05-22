@@ -197,31 +197,6 @@
         .stat-number { font-size: 2.5em; font-weight: 700; color: #6B1A6B; }
         .stat-label { color: #888; font-size: 0.9em; margin-top: 5px; }
 
-        /* ===== GITHUB STATUS ===== */
-        .github-status {
-            background: white;
-            border-radius: 12px;
-            padding: 14px 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9em;
-        }
-
-        .github-status .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #43a047;
-            flex-shrink: 0;
-        }
-
-        .github-status .dot.error { background: #e53935; }
-        .github-status span { color: #555; }
-        .github-status strong { color: #333; }
-
         /* ===== AKCIJE ===== */
         .action-bar {
             display: flex;
@@ -592,18 +567,13 @@
         <div class="admin-header">
             <div>
                 <h1>🔧 HGspot Admin Panel</h1>
-                <p id="repoInfo">Učitavam...</p>
             </div>
             <div class="header-actions">
-                <button class="btn-settings" onclick="showSetup()">⚙️ GitHub</button>
+                <button class="btn-settings" onclick="showSetup()">
+                    <span id="statusDot" style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#ccc;margin-right:6px;vertical-align:middle;"></span>⚙️ GitHub
+                </button>
                 <button class="logout-btn" onclick="logout()">🚪 Odjava</button>
             </div>
-        </div>
-
-        <!-- GitHub Status -->
-        <div class="github-status" id="githubStatus">
-            <div class="dot" id="statusDot"></div>
-            <span id="statusText">Provjeravam GitHub vezu...</span>
         </div>
 
         <!-- Statistika -->
@@ -762,8 +732,6 @@
         function showAdminPanel() {
             document.getElementById('setupScreen').style.display = 'none';
             document.getElementById('adminPanel').style.display = 'block';
-            document.getElementById('repoInfo').textContent =
-                `${GITHUB_USERNAME}/${GITHUB_REPO}`;
             loadDatabase();
         }
 
@@ -876,27 +844,20 @@
         // ===== GITHUB STATUS UI =====
         function updateGithubStatus(status, message = '') {
             const dot = document.getElementById('statusDot');
-            const text = document.getElementById('statusText');
-            const settings = getGithubSettings();
-
-            dot.className = 'dot';
 
             switch(status) {
                 case 'loading':
                     dot.style.background = '#fb8c00';
-                    text.innerHTML = `Spajam se na GitHub...`;
                     break;
                 case 'ok':
                     dot.style.background = '#43a047';
-                    text.innerHTML = `✅ Spojeno · <strong>${GITHUB_USERNAME}/${GITHUB_REPO}</strong> · ${brandDatabase.length} brandova`;
                     break;
                 case 'offline':
                     dot.style.background = '#fb8c00';
-                    text.innerHTML = `⚠️ GitHub nedostupan · Radim s lokalnom kopijom`;
                     break;
                 case 'error':
                     dot.style.background = '#e53935';
-                    text.innerHTML = `❌ ${message}`;
+                    showToast(`❌ ${message}`, 'error');
                     break;
             }
         }
