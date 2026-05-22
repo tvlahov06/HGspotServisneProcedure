@@ -113,5 +113,19 @@
     ],
     "documents": [],
     "website": "https://eu-rma.asus.com/hr/info/warranty"
+  },
+  {
+    "brand": "Asus monitori",
+    "servisi": [
+      {
+        "service": "Microline",
+        "dobavljac": "Msan, Microline, Also Croatia",
+        "address": "Slavonska avenija 26/9, 10000 Zagreb",
+        "kontakt": "servis@microline.hr",
+        "napomena": "Nalog preko Asus RMA obrasca"
+      }
+    ],
+    "documents": [],
+    "website": "https://eu-rma.asus.com/hr/info/warranty"
   }
 ]
