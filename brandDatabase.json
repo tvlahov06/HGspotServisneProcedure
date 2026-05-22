@@ -246,5 +246,19 @@
     ],
     "documents": [],
     "website": null
+  },
+  {
+    "brand": "Philips MKA",
+    "servisi": [
+      {
+        "service": "Singuli servis",
+        "dobavljac": "Philips",
+        "address": "Antuna Gustava Matoša 171, 21210 Solin",
+        "kontakt": "info@singuli.hr; 021/579-099",
+        "napomena": "Poslati mail ili ispuniti online obrazac za prikup o trošku primatelja"
+      }
+    ],
+    "documents": [],
+    "website": "https://portal.singuli.hr/PrijavaKvara"
   }
 ]
