@@ -57,5 +57,19 @@
     ],
     "documents": [],
     "website": null
+  },
+  {
+    "brand": "Acer monitori",
+    "servisi": [
+      {
+        "service": "Microline",
+        "dobavljac": "Msan, Microline, Also Croatia",
+        "address": "Slavonska avenija 26/9, 10000 Zagreb",
+        "kontakt": "servis@microline.hr; 01/2797730",
+        "napomena": "Slanje na trošak primatelja - OEX"
+      }
+    ],
+    "documents": [],
+    "website": null
   }
 ]
