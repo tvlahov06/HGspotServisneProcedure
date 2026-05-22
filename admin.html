@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HGspot Admin Panel</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(180deg, #6B1A6B 0%, #9B2D8E 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* ===== LOGIN ===== */
+        #loginScreen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .login-box {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-box h1 {
+            color: #6B1A6B;
+            margin-bottom: 8px;
+            font-size: 1.8em;
+        }
+
+        .login-box p {
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1.1em;
+            margin-bottom: 16px;
+            text-align: center;
+            letter-spacing: 4px;
+            font-size: 1.4em;
+            transition: all 0.3s;
+        }
+
+        .login-box input:focus {
+            outline: none;
+            border-color: #6B1A6B;
+            box-shadow: 0 0 0 3px rgba(107,26,107,0.15);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(180deg, #6B1A6B 0%, #9B2D8E 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(107, 26, 107, 0.4);
+        }
+
+        .login-error {
+            color: #e53935;
+            margin-top: 12px;
+            font-size: 0.95em;
+            display: none;
+        }
+
+        /* ===== ADMIN PANEL ===== */
+        #adminPanel { display: none; }
+
+        .admin-header {
+            background: white;
+            border-radius: 15px;
+            padding: 20px 30px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .admin-header h1 {
+            color: #6B1A6B;
+            font-size: 1.5em;
+        }
+
+        .admin-header p {
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .logout-btn {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover { background: #d32f2f; }
+
+        /* ===== STATS ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #6B1A6B;
+        }
+
+        .stat-label {
+            color: #888;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        /* ===== AKCIJE ===== */
+        .action-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(180deg, #6B1A6B 0%, #9B2D8E 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(107, 26, 107, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #43a047 0%, #2e7d32 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67,160,71,0.4);
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #fb8c00 0%, #e65100 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-warning:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(251,140,0,0.4);
+        }
+
+        /* ===== SEARCH ===== */
+        .search-bar {
+            background: white;
+            padding: 16px 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            border: none;
+            font-size: 1em;
+            outline: none;
+            padding-right: 30px;
+            color: #333;
+        }
+
+        /* ===== BRAND LIST ===== */
+        .brand-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .brand-card {
+            background: white;
+            border-radius: 12px;
+            padding: 18px 22px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+        }
+
+        .brand-card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+            transform: translateY(-2px);
+        }
+
+        .brand-card-info h3 {
+            color: #6B1A6B;
+            font-size: 1.1em;
+            margin-bottom: 4px;
+        }
+
+        .brand-card-info p {
+            color: #888;
+            font-size: 0.85em;
+        }
+
+        .brand-card-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-edit {
+            background: #f3e5f5;
+            color: #6B1A6B;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+
+        .btn-edit:hover { background: #e1bee7; }
+
+        .btn-delete {
+            background: #ffebee;
+            color: #e53935;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+
+        .btn-delete:hover { background: #ffcdd2; }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .modal h2 {
+            color: #6B1A6B;
+            margin-bottom: 25px;
+            font-size: 1.4em;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #444;
+            font-size: 0.9em;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 11px 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 9px;
+            font-size: 0.95em;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #6B1A6B;
+            box-shadow: 0 0 0 3px rgba(107, 26, 107, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 70px;
+        }
+
+        /* ===== SERVISI SEKCIJA ===== */
+        .servisi-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .servisi-section h3 {
+            color: #0B2D72;
+            margin-bottom: 15px;
+            font-size: 1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .servis-block {
+            background: white;
+            border: 2px solid #e8ecf0;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .servis-block-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .servis-block-header span {
+            font-weight: 700;
+            color: #6B1A6B;
+            font-size: 0.9em;
+        }
+
+        .btn-remove-servis {
+            background: #ffebee;
+            color: #e53935;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .btn-remove-servis:hover { background: #ffcdd2; }
+
+        .btn-add-servis {
+            background: #f3e5f5;
+            color: #6B1A6B;
+            border: 2px dashed #ce93d8;
+            padding: 10px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.2s;
+        }
+
+        .btn-add-servis:hover { background: #e1bee7; }
+
+        /* ===== MODAL AKCIJE ===== */
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .btn-save {
+            flex: 1;
+            background: linear-gradient(180deg, #6B1A6B 0%, #9B2D8E 100%);
+            color: white;
+            border: none;
+            padding: 13px;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-save:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(107, 26, 107, 0.4);
+        }
+
+        .btn-cancel {
+            background: #f5f5f5;
+            color: #666;
+            border: none;
+            padding: 13px 24px;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-cancel:hover { background: #e0e0e0; }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #323232;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            z-index: 9999;
+            transition: transform 0.4s ease;
+            white-space: nowrap;
+        }
+
+        .toast.show { transform: translateX(-50%) translateY(0); }
+        .toast.success { background: #43a047; }
+        .toast.error { background: #e53935; }
+
+        /* ===== EMPTY STATE ===== */
+        .empty-state {
+            background: white;
+            border-radius: 12px;
+            padding: 60px 30px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .empty-state p { color: #888; font-size: 1.1em; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            .stats-grid { grid-template-columns: repeat(3, 1fr); }
+            .admin-header { flex-direction: column; gap: 15px; text-align: center; }
+            .modal { padding: 25px 20px; }
+            .stat-number { font-size: 1.8em; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== LOGIN SCREEN ===== -->
+    <div id="loginScreen">
+        <div class="login-box">
+            <h1>🔧 HGspot</h1>
+            <p>Admin Panel - Servisne Procedure</p>
+            <input 
+                type="password" 
+                id="passwordInput" 
+                placeholder="••••"
+                onkeydown="if(event.key==='Enter') login()"
+                autofocus
+            >
+            <button class="login-btn" onclick="login()">🔓 Prijava</button>
+            <p class="login-error" id="loginError">❌ Pogrešna lozinka!</p>
+        </div>
+    </div>
+
+    <!-- ===== ADMIN PANEL ===== -->
+    <div id="adminPanel">
+
+        <!-- Header -->
+        <div class="admin-header">
+            <div>
+                <h1>🔧 HGspot Admin Panel</h1>
+                <p>Upravljanje servisnim procedurama</p>
+            </div>
+            <button class="logout-btn" onclick="logout()">🚪 Odjava</button>
+        </div>
+
+        <!-- Statistika -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="statBrands">0</div>
+                <div class="stat-label">Brandova</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="statServisi">0</div>
+                <div class="stat-label">Servisa</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="statDocs">0</div>
+                <div class="stat-label">Dokumenata</div>
+            </div>
+        </div>
+
+        <!-- Akcije -->
+        <div class="action-bar">
+            <button class="btn-primary" onclick="openAddModal()">➕ Dodaj Brand</button>
+            <button class="btn-success" onclick="exportJSON()">📤 Export JSON</button>
+            <label class="btn-warning" style="cursor:pointer;">
+                📥 Import JSON
+                <input type="file" accept=".json" onchange="importJSON(event)" style="display:none;">
+            </label>
+        </div>
+
+        <!-- Pretraga -->
+        <div class="search-bar">
+            <input 
+                type="text" 
+                id="adminSearch" 
+                placeholder="🔍  Pretraži brandove..."
+                oninput="filterBrands()"
+            >
+        </div>
+
+        <!-- Brand lista -->
+        <div class="brand-list" id="brandList"></div>
+
+    </div>
+
+    <!-- ===== MODAL ZA DODAVANJE / UREĐIVANJE ===== -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <h2 id="modalTitle">➕ Dodaj Novi Brand</h2>
+
+            <!-- Brand naziv -->
+            <div class="form-group">
+                <label>Naziv Branda *</label>
+                <input type="text" id="brandName" placeholder="npr. Samsung">
+            </div>
+
+            <!-- Servisi -->
+            <div class="servisi-section">
+                <h3>
+                    🏢 Servisi
+                </h3>
+                <div id="servisiContainer"></div>
+                <button class="btn-add-servis" onclick="addServisBlock()">➕ Dodaj još jedan servis</button>
+            </div>
+
+            <!-- Dokumenti -->
+            <div class="servisi-section">
+                <h3>📄 Dokumenti</h3>
+                <div id="documentsContainer"></div>
+                <button class="btn-add-servis" onclick="addDocumentBlock()">➕ Dodaj dokument</button>
+            </div>
+
+            <!-- Website -->
+            <div class="form-group">
+                <label>🔗 Website (opcionalno)</label>
+                <input type="text" id="brandWebsite" placeholder="https://www.example.com">
+            </div>
+
+            <!-- Akcije -->
+            <div class="modal-actions">
+                <button class="btn-save" onclick="saveBrand()">💾 Spremi Brand</button>
+                <button class="btn-cancel" onclick="closeModal()">Odustani</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notifikacija -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // ===== KONSTANTE =====
+        const ADMIN_PASSWORD = '2233';
+        let brandDatabase = [];
+        let editingIndex = -1;
+
+        // ===== LOGIN =====
+        function login() {
+            const pw = document.getElementById('passwordInput').value;
+            if (pw === ADMIN_PASSWORD) {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'block';
+                loadDatabase();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+                document.getElementById('passwordInput').value = '';
+                document.getElementById('passwordInput').focus();
+            }
+        }
+
+        function logout() {
+            document.getElementById('loginScreen').style.display = 'flex';
+            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('passwordInput').value = '';
+        }
+
+        // ===== UČITAVANJE BAZE =====
+        async function loadDatabase() {
+            try {
+                const response = await fetch('brandDatabase.json?t=' + Date.now());
+                if (!response.ok) throw new Error('Nije moguće učitati');
+                brandDatabase = await response.json();
+                console.log(`✅ Učitano ${brandDatabase.length} brandova`);
+            } catch (error) {
+                console.warn('⚠️ Nije moguće učitati JSON, krećem s praznom bazom');
+                brandDatabase = [];
+            }
+            renderBrandList();
+            updateStats();
+        }
+
+        // ===== STATISTIKA =====
+        function updateStats() {
+            document.getElementById('statBrands').textContent = brandDatabase.length;
+            
+            let totalServisi = 0;
+            let totalDocs = 0;
+            brandDatabase.forEach(b => {
+                totalServisi += (b.servisi || []).length;
+                totalDocs += (b.documents || []).length;
+            });
+            
+            document.getElementById('statServisi').textContent = totalServisi;
+            document.getElementById('statDocs').textContent = totalDocs;
+        }
+
+        // ===== RENDERIRANJE LISTE =====
+        function renderBrandList(filter = '') {
+            const list = document.getElementById('brandList');
+            const filtered = brandDatabase.filter(b => 
+                b.brand.toLowerCase().includes(filter.toLowerCase())
+            );
+
+            if (filtered.length === 0) {
+                list.innerHTML = `
+                    <div class="empty-state">
+                        <p>${filter ? '🔍 Nema rezultata za "' + filter + '"' : '📭 Baza je prazna. Dodaj prvi brand!'}</p>
+                    </div>`;
+                return;
+            }
+
+            list.innerHTML = filtered.map((brand, idx) => {
+                const realIdx = brandDatabase.indexOf(brand);
+                const servisCount = (brand.servisi || []).length;
+                const docCount = (brand.documents || []).length;
+                return `
+                    <div class="brand-card">
+                        <div class="brand-card-info">
+                            <h3>${brand.brand}</h3>
+                            <p>${servisCount} servis${servisCount !== 1 ? 'a' : ''} · ${docCount} dokument${docCount !== 1 ? 'a' : ''}</p>
+                        </div>
+                        <div class="brand-card-actions">
+                            <button class="btn-edit" onclick="openEditModal(${realIdx})">✏️ Uredi</button>
+                            <button class="btn-delete" onclick="deleteBrand(${realIdx})">🗑️ Briši</button>
+                        </div>
+                    </div>`;
+            }).join('');
+        }
+
+        function filterBrands() {
+            renderBrandList(document.getElementById('adminSearch').value);
+        }
+
+        // ===== MODAL - OTVORI ZA DODAVANJE =====
+        function openAddModal() {
+            editingIndex = -1;
+            document.getElementById('modalTitle').textContent = '➕ Dodaj Novi Brand';
+            document.getElementById('brandName').value = '';
+            document.getElementById('brandWebsite').value = '';
+            document.getElementById('servisiContainer').innerHTML = '';
+            document.getElementById('documentsContainer').innerHTML = '';
+            addServisBlock();
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        // ===== MODAL - OTVORI ZA UREĐIVANJE =====
+        function openEditModal(idx) {
+            editingIndex = idx;
+            const brand = brandDatabase[idx];
+
+            document.getElementById('modalTitle').textContent = '✏️ Uredi Brand';
+            document.getElementById('brandName').value = brand.brand;
+            document.getElementById('brandWebsite').value = brand.website || '';
+
+            // Servisi
+            document.getElementById('servisiContainer').innerHTML = '';
+            (brand.servisi || []).forEach(s => addServisBlock(s));
+
+            // Dokumenti
+            document.getElementById('documentsContainer').innerHTML = '';
+            (brand.documents || []).forEach(d => addDocumentBlock(d));
+
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+
+        // ===== SERVIS BLOK =====
+        function addServisBlock(data = null) {
+            const container = document.getElementById('servisiContainer');
+            const idx = container.children.length + 1;
+            const div = document.createElement('div');
+            div.className = 'servis-block';
+            div.innerHTML = `
+                <div class="servis-block-header">
+                    <span>🏢 Servis ${idx}</span>
+                    <button class="btn-remove-servis" onclick="removeBlock(this)">✕ Ukloni</button>
+                </div>
+                <div class="form-group">
+                    <label>Naziv servisa *</label>
+                    <input type="text" class="servis-naziv" placeholder="npr. Samsung Ovlašteni Servis Zagreb" value="${data ? escapeHtml(data.service) : ''}">
+                </div>
+                <div class="form-group">
+                    <label>Adresa *</label>
+                    <input type="text" class="servis-adresa" placeholder="npr. Vukovarska 78, Zagreb" value="${data ? escapeHtml(data.address) : ''}">
+                </div>
+                <div class="form-group">
+                    <label>Kontakt *</label>
+                    <input type="text" class="servis-kontakt" placeholder="npr. info@samsung.hr, 01 234 5678" value="${data ? escapeHtml(data.kontakt) : ''}">
+                </div>
+                <div class="form-group">
+                    <label>Napomena</label>
+                    <input type="text" class="servis-napomena" placeholder="npr. Radno vrijeme: Pon-Pet 8-16h" value="${data ? escapeHtml(data.napomena) : ''}">
+                </div>
+            `;
+            container.appendChild(div);
+            renumberServisi();
+        }
+
+        function removeBlock(btn) {
+            btn.closest('.servis-block, .document-block').remove();
+            renumberServisi();
+        }
+
+        function renumberServisi() {
+            const blocks = document.querySelectorAll('#servisiContainer .servis-block');
+            blocks.forEach((b, i) => {
+                b.querySelector('.servis-block-header span').textContent = `🏢 Servis ${i + 1}`;
+            });
+        }
+
+        // ===== DOKUMENT BLOK =====
+        function addDocumentBlock(data = null) {
+            const container = document.getElementById('documentsContainer');
+            const div = document.createElement('div');
+            div.className = 'servis-block document-block';
+            div.innerHTML = `
+                <div class="servis-block-header">
+                    <span>📄 Dokument</span>
+                    <button class="btn-remove-servis" onclick="removeBlock(this)">✕ Ukloni</button>
+                </div>
+                <div class="form-group">
+                    <label>Naziv dokumenta *</label>
+                    <input type="text" class="doc-naziv" placeholder="npr. Samsung_Servisni_Obrazac.pdf" value="${data ? escapeHtml(data.name) : ''}">
+                </div>
+                <div class="form-group">
+                    <label>URL / Putanja *</label>
+                    <input type="text" class="doc-url" placeholder="npr. documents/Samsung_Servisni_Obrazac.pdf" value="${data ? escapeHtml(data.url) : ''}">
+                </div>
+            `;
+            container.appendChild(div);
+        }
+
+        // ===== SPREMI BRAND =====
+        function saveBrand() {
+            const name = document.getElementById('brandName').value.trim();
+            if (!name) {
+                showToast('❌ Naziv branda je obavezan!', 'error');
+                document.getElementById('brandName').focus();
+                return;
+            }
+
+            // Skupi servise
+            const servisiBlocks = document.querySelectorAll('#servisiContainer .servis-block');
+            const servisi = [];
+            let valid = true;
+
+            servisiBlocks.forEach(block => {
+                const naziv = block.querySelector('.servis-naziv').value.trim();
+                const adresa = block.querySelector('.servis-adresa').value.trim();
+                const kontakt = block.querySelector('.servis-kontakt').value.trim();
+                const napomena = block.querySelector('.servis-napomena').value.trim();
+
+                if (!naziv || !adresa || !kontakt) {
+                    showToast('❌ Naziv, adresa i kontakt su obavezni za svaki servis!', 'error');
+                    valid = false;
+                    return;
+                }
+
+                servisi.push({ service: naziv, address: adresa, kontakt: kontakt, napomena: napomena });
+            });
+
+            if (!valid) return;
+            if (servisi.length === 0) {
+                showToast('❌ Dodaj barem jedan servis!', 'error');
+                return;
+            }
+
+            // Skupi dokumente
+            const docBlocks = document.querySelectorAll('#documentsContainer .document-block');
+            const documents = [];
+            docBlocks.forEach(block => {
+                const naziv = block.querySelector('.doc-naziv').value.trim();
+                const url = block.querySelector('.doc-url').value.trim();
+                if (naziv && url) documents.push({ name: naziv, url: url });
+            });
+
+            const website = document.getElementById('brandWebsite').value.trim() || null;
+
+            const brandObj = { brand: name, servisi, documents, website };
+
+            if (editingIndex === -1) {
+                brandDatabase.push(brandObj);
+                showToast('✅ Brand dodan!', 'success');
+            } else {
+                brandDatabase[editingIndex] = brandObj;
+                showToast('✅ Brand ažuriran!', 'success');
+            }
+
+            closeModal();
+            renderBrandList(document.getElementById('adminSearch').value);
+            updateStats();
+        }
+
+        // ===== BRIŠI BRAND =====
+        function deleteBrand(idx) {
+            const name = brandDatabase[idx].brand;
+            if (confirm(`Jesi li siguran da želiš obrisati "${name}"?`)) {
+                brandDatabase.splice(idx, 1);
+                renderBrandList(document.getElementById('adminSearch').value);
+                updateStats();
+                showToast(`🗑️ "${name}" obrisan!`, 'success');
+            }
+        }
+
+        // ===== EXPORT JSON =====
+        function exportJSON() {
+            const json = JSON.stringify(brandDatabase, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'brandDatabase.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast(`📤 Exportano ${brandDatabase.length} brandova!`, 'success');
+        }
+
+        // ===== IMPORT JSON =====
+        function importJSON(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (!Array.isArray(data)) throw new Error('Nije valjan format');
+                    brandDatabase = data;
+                    renderBrandList();
+                    updateStats();
+                    showToast(`📥 Importano ${brandDatabase.length} brandova!`, 'success');
+                } catch (err) {
+                    showToast('❌ Greška: Nije valjan JSON file!', 'error');
+                }
+            };
+            reader.readAsText(file);
+            event.target.value = '';
+        }
+
+        // ===== TOAST =====
+        function showToast(msg, type = '') {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.className = 'toast show ' + type;
+            setTimeout(() => toast.className = 'toast ' + type, 3000);
+        }
+
+        // ===== HELPER =====
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        }
+
+        // Zatvori modal klikom izvan
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
+</body>
+</html>
