@@ -99,5 +99,19 @@
     ],
     "documents": [],
     "website": "https://eu-rma.asus.com/hr/info/warranty"
+  },
+  {
+    "brand": "Asus mobiteli",
+    "servisi": [
+      {
+        "service": "Asus Czech Service s.r.o.",
+        "dobavljac": "Asus",
+        "address": "Sarka Foltynova Hrusovska 2678, 70200 Ostrava, Czech Republic",
+        "kontakt": "advance.rma.eu@asus.com",
+        "napomena": "Nalog preko Asus RMA obrasca gdje nakon popunjavanja servis šalje prikup"
+      }
+    ],
+    "documents": [],
+    "website": "https://eu-rma.asus.com/hr/info/warranty"
   }
 ]
