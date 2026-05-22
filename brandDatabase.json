@@ -169,5 +169,19 @@
     ],
     "documents": [],
     "website": null
+  },
+  {
+    "brand": "Canon printeri, skeneri",
+    "servisi": [
+      {
+        "service": "KSU d.o.o.",
+        "dobavljac": "Microline, Also C, Eurotrade",
+        "address": "Dr. Jurja Dobrile 50, 10410 Velika Gorica",
+        "kontakt": "servis@ksu.hr; 01/6222-122",
+        "napomena": "poslati mail za prikup na nalog@dpd.hr"
+      }
+    ],
+    "documents": [],
+    "website": "https://www.ksu.hr/prijava-kvara"
   }
 ]
