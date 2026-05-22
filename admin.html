@@ -181,7 +181,7 @@
         /* ===== STATS ===== */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 15px;
             margin-bottom: 25px;
         }
@@ -518,7 +518,7 @@
         .empty-state p { color: #888; font-size: 1.1em; }
 
         @media (max-width: 600px) {
-            .stats-grid { grid-template-columns: repeat(3, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .admin-header { flex-direction: column; gap: 15px; text-align: center; }
             .modal { padding: 25px 20px; }
             .stat-number { font-size: 1.8em; }
@@ -589,6 +589,10 @@
             <div class="stat-card">
                 <div class="stat-number" id="statDocs">0</div>
                 <div class="stat-label">Dokumenata</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="statWebsites">0</div>
+                <div class="stat-label">Websiteova</div>
             </div>
         </div>
 
@@ -865,13 +869,15 @@
         // ===== STATISTIKA =====
         function updateStats() {
             document.getElementById('statBrands').textContent = brandDatabase.length;
-            let totalServisi = 0, totalDocs = 0;
+            let totalServisi = 0, totalDocs = 0, totalWebsites = 0;
             brandDatabase.forEach(b => {
                 totalServisi += (b.servisi || []).length;
                 totalDocs += (b.documents || []).length;
+                if (b.website) totalWebsites++;
             });
             document.getElementById('statServisi').textContent = totalServisi;
             document.getElementById('statDocs').textContent = totalDocs;
+            document.getElementById('statWebsites').textContent = totalWebsites;
         }
 
         // ===== RENDERIRANJE LISTE =====
