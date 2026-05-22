@@ -973,6 +973,10 @@
                     <input type="text" class="servis-naziv" placeholder="npr. Samsung Ovlašteni Servis Zagreb" value="${data ? escHtml(data.service) : ''}">
                 </div>
                 <div class="form-group">
+                    <label>Dobavljač</label>
+                    <input type="text" class="servis-dobavljac" placeholder="npr. Samsung Electronics" value="${data ? escHtml(data.dobavljac || '') : ''}">
+                </div>
+                <div class="form-group">
                     <label>Adresa *</label>
                     <input type="text" class="servis-adresa" placeholder="npr. Vukovarska 78, Zagreb" value="${data ? escHtml(data.address) : ''}">
                 </div>
@@ -1034,14 +1038,15 @@
 
             servisiBlocks.forEach(block => {
                 const naziv = block.querySelector('.servis-naziv').value.trim();
+                const dobavljac = block.querySelector('.servis-dobavljac').value.trim();
                 const adresa = block.querySelector('.servis-adresa').value.trim();
                 const kontakt = block.querySelector('.servis-kontakt').value.trim();
                 const napomena = block.querySelector('.servis-napomena').value.trim();
-                if (!naziv || !adresa || !kontakt) { valid = false; return; }
-                servisi.push({ service: naziv, address: adresa, kontakt, napomena });
+                if (!naziv) { valid = false; return; }
+                servisi.push({ service: naziv, dobavljac, address: adresa, kontakt, napomena });
             });
 
-            if (!valid) { showToast('❌ Naziv, adresa i kontakt su obavezni!', 'error'); return; }
+            if (!valid) { showToast('❌ Naziv servisa je obavezan!', 'error'); return; }
             if (servisi.length === 0) { showToast('❌ Dodaj barem jedan servis!', 'error'); return; }
 
             const docBlocks = document.querySelectorAll('#documentsContainer .document-block');

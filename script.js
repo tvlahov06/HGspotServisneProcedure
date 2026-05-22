@@ -78,6 +78,11 @@ function displayResults(matches) {
                         <div class="info-label"><span class="icon">🏢</span> Servis:</div>
                         <div class="info-value">${servis.service}</div>
                     </div>
+                    ${servis.dobavljac ? `
+                    <div class="info-row">
+                        <div class="info-label"><span class="icon">🏭</span> Dobavljač:</div>
+                        <div class="info-value">${servis.dobavljac}</div>
+                    </div>` : ''}
                     <div class="info-row">
                         <div class="info-label"><span class="icon">📍</span> Adresa:</div>
                         <div class="info-value">${servis.address}</div>
