@@ -897,7 +897,7 @@
                     <div class="brand-card">
                         <div class="brand-card-info">
                             <h3>${brand.brand}</h3>
-                            <p>${servisCount} servis${servisCount !== 1 ? 'a' : ''} · ${docCount} dokument${docCount !== 1 ? 'a' : ''}</p>
+                            <p>${servisCount} servis${servisCount !== 1 ? 'a' : ''} · ${docCount} dokument${docCount !== 1 ? 'a' : ''}${brand.website ? ' · <a href="' + brand.website + '" target="_blank" style="color:#9B2D8E;">' + brand.website + '</a>' : ''}</p>
                         </div>
                         <div class="brand-card-actions">
                             <button class="btn-edit" onclick="openEditModal(${realIdx})">✏️ Uredi</button>
@@ -953,7 +953,7 @@
                     <button class="btn-remove-servis" onclick="removeBlock(this)">✕ Ukloni</button>
                 </div>
                 <div class="form-group">
-                    <label>Naziv servisa *</label>
+                    <label>Naziv servisa</label>
                     <input type="text" class="servis-naziv" placeholder="npr. Samsung Ovlašteni Servis Zagreb" value="${data ? escHtml(data.service) : ''}">
                 </div>
                 <div class="form-group">
@@ -961,16 +961,16 @@
                     <input type="text" class="servis-dobavljac" placeholder="npr. Samsung Electronics" value="${data ? escHtml(data.dobavljac || '') : ''}">
                 </div>
                 <div class="form-group">
-                    <label>Adresa *</label>
+                    <label>Adresa</label>
                     <input type="text" class="servis-adresa" placeholder="npr. Vukovarska 78, Zagreb" value="${data ? escHtml(data.address) : ''}">
                 </div>
                 <div class="form-group">
-                    <label>Kontakt *</label>
+                    <label>Kontakt</label>
                     <input type="text" class="servis-kontakt" placeholder="npr. info@samsung.hr, 01 234 5678" value="${data ? escHtml(data.kontakt) : ''}">
                 </div>
                 <div class="form-group">
                     <label>Napomena</label>
-                    <input type="text" class="servis-napomena" placeholder="npr. Radno vrijeme: Pon-Pet 8-16h" value="${data ? escHtml(data.napomena) : ''}">
+                    <input type="text" class="servis-napomena" placeholder="Slanje na trošak primatelja" value="${data ? escHtml(data.napomena) : ''}">
                 </div>`;
             container.appendChild(div);
             renumberServisi();
@@ -1018,7 +1018,6 @@
 
             const servisiBlocks = document.querySelectorAll('#servisiContainer .servis-block');
             const servisi = [];
-            let valid = true;
 
             servisiBlocks.forEach(block => {
                 const naziv = block.querySelector('.servis-naziv').value.trim();
@@ -1026,11 +1025,9 @@
                 const adresa = block.querySelector('.servis-adresa').value.trim();
                 const kontakt = block.querySelector('.servis-kontakt').value.trim();
                 const napomena = block.querySelector('.servis-napomena').value.trim();
-                if (!naziv) { valid = false; return; }
                 servisi.push({ service: naziv, dobavljac, address: adresa, kontakt, napomena });
             });
 
-            if (!valid) { showToast('❌ Naziv servisa je obavezan!', 'error'); return; }
             if (servisi.length === 0) { showToast('❌ Dodaj barem jedan servis!', 'error'); return; }
 
             const docBlocks = document.querySelectorAll('#documentsContainer .document-block');
