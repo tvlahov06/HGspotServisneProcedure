@@ -69,6 +69,66 @@
         .login-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(107,26,107,0.4); }
         .login-error { color: #e53935; margin-top: 12px; font-size: 0.95em; display: none; }
 
+        /* ===== GITHUB SETUP SCREEN ===== */
+        #setupScreen { display: none; }
+
+        .setup-box {
+            background: white;
+            border-radius: 15px;
+            padding: 35px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .setup-box h2 { color: #6B1A6B; margin-bottom: 8px; font-size: 1.4em; }
+        .setup-box > p { color: #888; margin-bottom: 25px; font-size: 0.95em; }
+
+
+
+        .setup-form .form-group { margin-bottom: 16px; }
+
+        .setup-form label {
+            display: block;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 6px;
+            font-size: 0.9em;
+        }
+
+        .setup-form input {
+            width: 100%;
+            padding: 11px 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 9px;
+            font-size: 0.95em;
+            transition: all 0.3s;
+        }
+
+        .setup-form input:focus {
+            outline: none;
+            border-color: #6B1A6B;
+            box-shadow: 0 0 0 3px rgba(107,26,107,0.1);
+        }
+
+        .setup-form input[type="password"] { letter-spacing: 2px; }
+
+        .btn-setup-save {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(180deg, #6B1A6B 0%, #9B2D8E 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 8px;
+        }
+
+        .btn-setup-save:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(107,26,107,0.4); }
+
         /* ===== ADMIN PANEL ===== */
         #adminPanel { display: none; }
 
@@ -84,7 +144,23 @@
         }
 
         .admin-header h1 { color: #6B1A6B; font-size: 1.5em; }
-        .admin-header p { color: #888; font-size: 0.9em; }
+        .admin-header p { color: #888; font-size: 0.85em; margin-top: 3px; }
+
+        .header-actions { display: flex; gap: 10px; align-items: center; }
+
+        .btn-settings {
+            background: #f3e5f5;
+            color: #6B1A6B;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+
+        .btn-settings:hover { background: #e1bee7; }
 
         .logout-btn {
             background: #f44336;
@@ -118,6 +194,31 @@
         .stat-number { font-size: 2.5em; font-weight: 700; color: #6B1A6B; }
         .stat-label { color: #888; font-size: 0.9em; margin-top: 5px; }
 
+        /* ===== GITHUB STATUS ===== */
+        .github-status {
+            background: white;
+            border-radius: 12px;
+            padding: 14px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+        }
+
+        .github-status .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #43a047;
+            flex-shrink: 0;
+        }
+
+        .github-status .dot.error { background: #e53935; }
+        .github-status span { color: #555; }
+        .github-status strong { color: #333; }
+
         /* ===== AKCIJE ===== */
         .action-bar {
             display: flex;
@@ -142,27 +243,7 @@
         }
 
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(107,26,107,0.4); }
-
-        /* ===== UPUTE BOX ===== */
-        .upute-box {
-            background: white;
-            border-radius: 12px;
-            padding: 18px 22px;
-            margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-            border-left: 4px solid #9B2D8E;
-        }
-
-        .upute-box h3 { color: #6B1A6B; margin-bottom: 10px; font-size: 1em; }
-
-        .upute-box ol {
-            padding-left: 20px;
-            color: #555;
-            font-size: 0.9em;
-            line-height: 1.9;
-        }
-
-        .upute-box ol li strong { color: #6B1A6B; }
+        .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
         /* ===== SEARCH ===== */
         .search-bar {
@@ -198,7 +279,6 @@
         .brand-card:hover { box-shadow: 0 5px 20px rgba(0,0,0,0.12); transform: translateY(-2px); }
         .brand-card-info h3 { color: #6B1A6B; font-size: 1.1em; margin-bottom: 4px; }
         .brand-card-info p { color: #888; font-size: 0.85em; }
-
         .brand-card-actions { display: flex; gap: 8px; }
 
         .btn-edit {
@@ -368,9 +448,14 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .btn-save:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(107,26,107,0.4); }
+        .btn-save:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
         .btn-cancel {
             background: #f5f5f5;
@@ -385,6 +470,43 @@
         }
 
         .btn-cancel:hover { background: #e0e0e0; }
+
+        /* ===== SAVING OVERLAY ===== */
+        .saving-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 9998;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .saving-overlay.active { display: flex; }
+
+        .saving-box {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 50px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .saving-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3e5f5;
+            border-top-color: #6B1A6B;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .saving-box p { color: #6B1A6B; font-weight: 600; font-size: 1.1em; }
+        .saving-box small { color: #888; font-size: 0.85em; }
 
         /* ===== TOAST ===== */
         .toast {
@@ -417,52 +539,17 @@
 
         .empty-state p { color: #888; font-size: 1.1em; }
 
-        /* ===== DOWNLOAD BANNER ===== */
-        .download-banner {
-            display: none;
-            background: white;
-            border-radius: 12px;
-            padding: 18px 22px;
-            margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-            border-left: 4px solid #43a047;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-        }
-
-        .download-banner.show { display: flex; }
-
-        .download-banner p { color: #333; font-size: 0.95em; }
-        .download-banner p strong { color: #2e7d32; }
-
-        .btn-download {
-            background: linear-gradient(135deg, #43a047 0%, #2e7d32 100%);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 9px;
-            font-weight: 600;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.3s;
-            font-size: 0.95em;
-        }
-
-        .btn-download:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(67,160,71,0.4); }
-
         @media (max-width: 600px) {
             .stats-grid { grid-template-columns: repeat(3, 1fr); }
             .admin-header { flex-direction: column; gap: 15px; text-align: center; }
             .modal { padding: 25px 20px; }
             .stat-number { font-size: 1.8em; }
-            .download-banner { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- LOGIN -->
+    <!-- ===== LOGIN ===== -->
     <div id="loginScreen">
         <div class="login-box">
             <h1>🔧 HGspot</h1>
@@ -479,16 +566,41 @@
         </div>
     </div>
 
-    <!-- ADMIN PANEL -->
+    <!-- ===== GITHUB SETUP ===== -->
+    <div id="setupScreen">
+        <div class="setup-box">
+            <h2>⚙️ GitHub Token</h2>
+            <p>Unesi GitHub token za automatsko spremanje.</p>
+
+            <div class="setup-form">
+                <div class="form-group">
+                    <label>GitHub Token *</label>
+                    <input type="password" id="setupToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+                </div>
+                <button class="btn-setup-save" onclick="saveGithubSettings()">✅ Spremi i nastavi</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ADMIN PANEL ===== -->
     <div id="adminPanel">
 
         <!-- Header -->
         <div class="admin-header">
             <div>
                 <h1>🔧 HGspot Admin Panel</h1>
-                <p>Upravljanje servisnim procedurama</p>
+                <p id="repoInfo">Učitavam...</p>
             </div>
-            <button class="logout-btn" onclick="logout()">🚪 Odjava</button>
+            <div class="header-actions">
+                <button class="btn-settings" onclick="showSetup()">⚙️ GitHub</button>
+                <button class="logout-btn" onclick="logout()">🚪 Odjava</button>
+            </div>
+        </div>
+
+        <!-- GitHub Status -->
+        <div class="github-status" id="githubStatus">
+            <div class="dot" id="statusDot"></div>
+            <span id="statusText">Provjeravam GitHub vezu...</span>
         </div>
 
         <!-- Statistika -->
@@ -507,26 +619,9 @@
             </div>
         </div>
 
-        <!-- Upute -->
-        <div class="upute-box">
-            <h3>📋 Kako dodati brand na stranicu:</h3>
-            <ol>
-                <li>Klikni <strong>➕ Dodaj Brand</strong> i popuni formu</li>
-                <li>Nakon spremanja klikni <strong>⬇️ Preuzmi brandDatabase.json</strong></li>
-                <li>Uploadaj preuzeti file na <strong>GitHub</strong> (zamijeni stari)</li>
-                <li>Pričekaj <strong>1-2 minute</strong> i brand se pojavljuje na stranici ✅</li>
-            </ol>
-        </div>
-
-        <!-- Download banner -->
-        <div class="download-banner" id="downloadBanner">
-            <p>✅ Baza ažurirana! <strong>Preuzmi JSON i uploadaj na GitHub.</strong></p>
-            <button class="btn-download" onclick="downloadJSON()">⬇️ Preuzmi brandDatabase.json</button>
-        </div>
-
         <!-- Akcije -->
         <div class="action-bar">
-            <button class="btn-primary" onclick="openAddModal()">➕ Dodaj Brand</button>
+            <button class="btn-primary" id="addBrandBtn" onclick="openAddModal()">➕ Dodaj Brand</button>
         </div>
 
         <!-- Pretraga -->
@@ -544,7 +639,7 @@
 
     </div>
 
-    <!-- MODAL -->
+    <!-- ===== MODAL ===== -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
             <h2 id="modalTitle">➕ Dodaj Novi Brand</h2>
@@ -554,48 +649,64 @@
                 <input type="text" id="brandName" placeholder="npr. Samsung">
             </div>
 
-            <!-- Servisi -->
             <div class="servisi-section">
                 <h3>🏢 Servisi</h3>
                 <div id="servisiContainer"></div>
                 <button class="btn-add-servis" onclick="addServisBlock()">➕ Dodaj još jedan servis</button>
             </div>
 
-            <!-- Dokumenti -->
             <div class="servisi-section">
                 <h3>📄 Dokumenti</h3>
                 <div id="documentsContainer"></div>
                 <button class="btn-add-servis" onclick="addDocumentBlock()">➕ Dodaj dokument</button>
             </div>
 
-            <!-- Website -->
             <div class="form-group">
                 <label>🔗 Website (opcionalno)</label>
                 <input type="text" id="brandWebsite" placeholder="https://www.example.com">
             </div>
 
             <div class="modal-actions">
-                <button class="btn-save" onclick="saveBrand()">💾 Spremi Brand</button>
+                <button class="btn-save" id="saveBtn" onclick="saveBrand()">💾 Spremi Brand</button>
                 <button class="btn-cancel" onclick="closeModal()">Odustani</button>
             </div>
+        </div>
+    </div>
+
+    <!-- ===== SAVING OVERLAY ===== -->
+    <div class="saving-overlay" id="savingOverlay">
+        <div class="saving-box">
+            <div class="saving-spinner"></div>
+            <p id="savingText">Spremam na GitHub...</p>
+            <small>Molimo pričekajte</small>
         </div>
     </div>
 
     <div class="toast" id="toast"></div>
 
     <script>
+        // ===== KONSTANTE =====
         const ADMIN_PASSWORD = '2233';
         const STORAGE_KEY = 'hgspot_brandDatabase';
+        const GITHUB_SETTINGS_KEY = 'hgspot_github_settings';
+        const GITHUB_USERNAME = 'tvlahov06';
+        const GITHUB_REPO = 'HGspotServisneProcedure';
+
         let brandDatabase = [];
         let editingIndex = -1;
+        let fileSHA = null; // GitHub zahtijeva SHA za update
 
         // ===== LOGIN =====
         function login() {
             const pw = document.getElementById('passwordInput').value;
             if (pw === ADMIN_PASSWORD) {
                 document.getElementById('loginScreen').style.display = 'none';
-                document.getElementById('adminPanel').style.display = 'block';
-                loadDatabase();
+                const settings = getGithubSettings();
+                if (!settings) {
+                    showSetup();
+                } else {
+                    showAdminPanel();
+                }
             } else {
                 document.getElementById('loginError').style.display = 'block';
                 document.getElementById('passwordInput').value = '';
@@ -606,57 +717,162 @@
         function logout() {
             document.getElementById('loginScreen').style.display = 'flex';
             document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('setupScreen').style.display = 'none';
             document.getElementById('passwordInput').value = '';
         }
 
-        // ===== UČITAVANJE =====
-        // Redosljed: 1. localStorage, 2. brandDatabase.json
-        async function loadDatabase() {
-            const saved = localStorage.getItem(STORAGE_KEY);
-            if (saved) {
-                try {
-                    brandDatabase = JSON.parse(saved);
-                    console.log(`✅ Učitano iz localStorage: ${brandDatabase.length} brandova`);
-                    renderBrandList();
-                    updateStats();
-                    return;
-                } catch(e) {
-                    console.warn('⚠️ Greška pri čitanju localStorage');
-                }
+        // ===== GITHUB SETTINGS =====
+        function getGithubSettings() {
+            const saved = localStorage.getItem(GITHUB_SETTINGS_KEY);
+            if (!saved) return null;
+            try { return JSON.parse(saved); } catch(e) { return null; }
+        }
+
+        function saveGithubSettings() {
+            const token = document.getElementById('setupToken').value.trim();
+
+            if (!token) {
+                showToast('❌ Token je obavezan!', 'error');
+                return;
             }
 
-            // Fallback - učitaj iz JSON filea
+            if (!token.startsWith('ghp_') && !token.startsWith('github_pat_')) {
+                showToast('❌ Token mora počinjati sa ghp_ ili github_pat_', 'error');
+                return;
+            }
+
+            localStorage.setItem(GITHUB_SETTINGS_KEY, JSON.stringify({ token }));
+            showToast('✅ Token spremljen!', 'success');
+            setTimeout(() => showAdminPanel(), 800);
+        }
+
+        function showSetup() {
+            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('setupScreen').style.display = 'block';
+
+            const settings = getGithubSettings();
+            if (settings) {
+                document.getElementById('setupToken').value = settings.token;
+            }
+        }
+
+        function showAdminPanel() {
+            document.getElementById('setupScreen').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+            document.getElementById('repoInfo').textContent =
+                `${GITHUB_USERNAME}/${GITHUB_REPO}`;
+            loadDatabase();
+        }
+
+        // ===== GITHUB API =====
+        async function githubFetch(method, path, body = null) {
+            const settings = getGithubSettings();
+            const url = `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents/${path}`;
+
+            const options = {
+                method,
+                headers: {
+                    'Authorization': `token ${settings.token}`,
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/vnd.github.v3+json'
+                }
+            };
+
+            if (body) options.body = JSON.stringify(body);
+
+            const response = await fetch(url, options);
+
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.message || `HTTP ${response.status}`);
+            }
+
+            return response.json();
+        }
+
+        // ===== UČITAVANJE IZ GITHUBA =====
+        async function loadDatabase() {
+            updateGithubStatus('loading');
+
             try {
-                const response = await fetch('brandDatabase.json?t=' + Date.now());
-                if (!response.ok) throw new Error();
-                brandDatabase = await response.json();
+                const data = await githubFetch('GET', 'brandDatabase.json');
+                fileSHA = data.sha; // Spremi SHA za buduće updateove
+
+                const decoded = atob(data.content.replace(/\n/g, ''));
+                brandDatabase = JSON.parse(decoded);
+
+                // Spremi lokalno kao backup
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(brandDatabase));
-                console.log(`✅ Učitano iz JSON: ${brandDatabase.length} brandova`);
-            } catch (e) {
-                console.warn('⚠️ Nije moguće učitati JSON, krećem s praznom bazom');
-                brandDatabase = [];
+
+                updateGithubStatus('ok');
+                console.log(`✅ Učitano ${brandDatabase.length} brandova iz GitHuba`);
+
+            } catch (error) {
+                console.error('❌ GitHub greška:', error);
+
+                // Fallback na localStorage
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) {
+                    brandDatabase = JSON.parse(saved);
+                    updateGithubStatus('offline');
+                    console.warn('⚠️ Koristim lokalnu kopiju');
+                } else {
+                    brandDatabase = [];
+                    updateGithubStatus('error', error.message);
+                }
             }
 
             renderBrandList();
             updateStats();
         }
 
-        // ===== SPREMI U LOCALSTORAGE =====
-        function saveToStorage() {
+        // ===== SPREMI NA GITHUB =====
+        async function saveToGithub() {
+            const settings = getGithubSettings();
+            const jsonContent = JSON.stringify(brandDatabase, null, 2);
+            const encoded = btoa(unescape(encodeURIComponent(jsonContent)));
+
+            const body = {
+                message: `Admin: ažuriranje brandDatabase.json (${brandDatabase.length} brandova)`,
+                content: encoded,
+                sha: fileSHA
+            };
+
+            const result = await githubFetch('PUT', 'brandDatabase.json', body);
+            fileSHA = result.content.sha; // Ažuriraj SHA za sljedeći put
+
+            // Spremi lokalno kao backup
             localStorage.setItem(STORAGE_KEY, JSON.stringify(brandDatabase));
+
+            return result;
         }
 
-        // ===== DOWNLOAD JSON =====
-        function downloadJSON() {
-            const json = JSON.stringify(brandDatabase, null, 2);
-            const blob = new Blob([json], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'brandDatabase.json';
-            a.click();
-            URL.revokeObjectURL(url);
-            showToast('📥 brandDatabase.json preuzet!', 'success');
+        // ===== GITHUB STATUS UI =====
+        function updateGithubStatus(status, message = '') {
+            const dot = document.getElementById('statusDot');
+            const text = document.getElementById('statusText');
+            const settings = getGithubSettings();
+
+            dot.className = 'dot';
+
+            switch(status) {
+                case 'loading':
+                    dot.style.background = '#fb8c00';
+                    text.innerHTML = `Spajam se na GitHub...`;
+                    break;
+                case 'ok':
+                    dot.style.background = '#43a047';
+                    text.innerHTML = `✅ Spojeno · <strong>${GITHUB_USERNAME}/${GITHUB_REPO}</strong> · ${brandDatabase.length} brandova`;
+                    break;
+                case 'offline':
+                    dot.style.background = '#fb8c00';
+                    text.innerHTML = `⚠️ GitHub nedostupan · Radim s lokalnom kopijom`;
+                    break;
+                case 'error':
+                    dot.style.background = '#e53935';
+                    text.innerHTML = `❌ Greška: ${message} · Provjeri GitHub postavke`;
+                    break;
+            }
         }
 
         // ===== STATISTIKA =====
@@ -802,11 +1018,10 @@
         }
 
         // ===== SPREMI BRAND =====
-        function saveBrand() {
+        async function saveBrand() {
             const name = document.getElementById('brandName').value.trim();
             if (!name) {
                 showToast('❌ Naziv branda je obavezan!', 'error');
-                document.getElementById('brandName').focus();
                 return;
             }
 
@@ -839,36 +1054,72 @@
 
             if (editingIndex === -1) {
                 brandDatabase.push(brandObj);
-                showToast('✅ Brand dodan!', 'success');
             } else {
                 brandDatabase[editingIndex] = brandObj;
-                showToast('✅ Brand ažuriran!', 'success');
             }
 
-            // Spremi u localStorage i prikaži download banner
-            saveToStorage();
-            showDownloadBanner();
             closeModal();
+
+            // Spremi na GitHub
+            showSaving('Spremam na GitHub...');
+
+            try {
+                await saveToGithub();
+                hideSaving();
+                showToast(editingIndex === -1 ? '✅ Brand dodan i spreman na GitHubu!' : '✅ Brand ažuriran na GitHubu!', 'success');
+                updateGithubStatus('ok');
+            } catch (error) {
+                hideSaving();
+                showToast(`❌ GitHub greška: ${error.message}`, 'error');
+                console.error(error);
+                // Vrati promjenu ako je greška
+                if (editingIndex === -1) {
+                    brandDatabase.pop();
+                } else {
+                    await loadDatabase();
+                }
+            }
+
             renderBrandList(document.getElementById('adminSearch').value);
             updateStats();
         }
 
         // ===== BRIŠI BRAND =====
-        function deleteBrand(idx) {
+        async function deleteBrand(idx) {
             const name = brandDatabase[idx].brand;
-            if (confirm(`Jesi li siguran da želiš obrisati "${name}"?`)) {
-                brandDatabase.splice(idx, 1);
-                saveToStorage();
-                showDownloadBanner();
-                renderBrandList(document.getElementById('adminSearch').value);
-                updateStats();
+            if (!confirm(`Jesi li siguran da želiš obrisati "${name}"?`)) return;
+
+            brandDatabase.splice(idx, 1);
+
+            showSaving('Brišem s GitHuba...');
+
+            try {
+                await saveToGithub();
+                hideSaving();
                 showToast(`🗑️ "${name}" obrisan!`, 'success');
+                updateGithubStatus('ok');
+            } catch (error) {
+                hideSaving();
+                showToast(`❌ GitHub greška: ${error.message}`, 'error');
+                await loadDatabase(); // Vrati stanje
             }
+
+            renderBrandList(document.getElementById('adminSearch').value);
+            updateStats();
         }
 
-        // ===== DOWNLOAD BANNER =====
-        function showDownloadBanner() {
-            document.getElementById('downloadBanner').classList.add('show');
+        // ===== SAVING OVERLAY =====
+        function showSaving(text = 'Spremam...') {
+            document.getElementById('savingText').textContent = text;
+            document.getElementById('savingOverlay').classList.add('active');
+            document.getElementById('saveBtn').disabled = true;
+            document.getElementById('addBrandBtn').disabled = true;
+        }
+
+        function hideSaving() {
+            document.getElementById('savingOverlay').classList.remove('active');
+            document.getElementById('saveBtn').disabled = false;
+            document.getElementById('addBrandBtn').disabled = false;
         }
 
         // ===== TOAST =====
@@ -876,7 +1127,7 @@
             const toast = document.getElementById('toast');
             toast.textContent = msg;
             toast.className = 'toast show ' + type;
-            setTimeout(() => toast.className = 'toast ' + type, 3000);
+            setTimeout(() => toast.className = 'toast ' + type, 4000);
         }
 
         // ===== HELPER =====
@@ -885,7 +1136,6 @@
             return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
         }
 
-        // Zatvori modal klikom izvan
         document.getElementById('modalOverlay').addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
