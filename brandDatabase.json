@@ -386,5 +386,19 @@
     ],
     "documents": [],
     "website": null
+  },
+  {
+    "brand": "HP laptopi",
+    "servisi": [
+      {
+        "service": "Zel-cos servis",
+        "dobavljac": "Microline, Msan, Also",
+        "address": "Ulica Grada Chicaga 28, 10000 Zagreb",
+        "kontakt": "servis@zel-cos.hr; 01/3033-120",
+        "napomena": "Poslati mail za prikup."
+      }
+    ],
+    "documents": [],
+    "website": null
   }
 ]
