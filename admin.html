@@ -32,23 +32,14 @@
             text-align: center;
         }
 
-        .login-box h1 {
-            color: #6B1A6B;
-            margin-bottom: 8px;
-            font-size: 1.8em;
-        }
-
-        .login-box p {
-            color: #888;
-            margin-bottom: 30px;
-        }
+        .login-box h1 { color: #6B1A6B; margin-bottom: 8px; font-size: 1.8em; }
+        .login-box p { color: #888; margin-bottom: 30px; }
 
         .login-box input {
             width: 100%;
             padding: 14px 18px;
             border: 2px solid #e0e0e0;
             border-radius: 10px;
-            font-size: 1.1em;
             margin-bottom: 16px;
             text-align: center;
             letter-spacing: 4px;
@@ -75,17 +66,8 @@
             transition: all 0.3s;
         }
 
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(107, 26, 107, 0.4);
-        }
-
-        .login-error {
-            color: #e53935;
-            margin-top: 12px;
-            font-size: 0.95em;
-            display: none;
-        }
+        .login-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(107,26,107,0.4); }
+        .login-error { color: #e53935; margin-top: 12px; font-size: 0.95em; display: none; }
 
         /* ===== ADMIN PANEL ===== */
         #adminPanel { display: none; }
@@ -101,15 +83,8 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .admin-header h1 {
-            color: #6B1A6B;
-            font-size: 1.5em;
-        }
-
-        .admin-header p {
-            color: #888;
-            font-size: 0.9em;
-        }
+        .admin-header h1 { color: #6B1A6B; font-size: 1.5em; }
+        .admin-header p { color: #888; font-size: 0.9em; }
 
         .logout-btn {
             background: #f44336;
@@ -140,17 +115,8 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .stat-number {
-            font-size: 2.5em;
-            font-weight: 700;
-            color: #6B1A6B;
-        }
-
-        .stat-label {
-            color: #888;
-            font-size: 0.9em;
-            margin-top: 5px;
-        }
+        .stat-number { font-size: 2.5em; font-weight: 700; color: #6B1A6B; }
+        .stat-label { color: #888; font-size: 0.9em; margin-top: 5px; }
 
         /* ===== AKCIJE ===== */
         .action-bar {
@@ -175,50 +141,28 @@
             gap: 8px;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(107, 26, 107, 0.4);
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(107,26,107,0.4); }
+
+        /* ===== UPUTE BOX ===== */
+        .upute-box {
+            background: white;
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border-left: 4px solid #9B2D8E;
         }
 
-        .btn-success {
-            background: linear-gradient(135deg, #43a047 0%, #2e7d32 100%);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 10px;
-            font-size: 1em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .upute-box h3 { color: #6B1A6B; margin-bottom: 10px; font-size: 1em; }
+
+        .upute-box ol {
+            padding-left: 20px;
+            color: #555;
+            font-size: 0.9em;
+            line-height: 1.9;
         }
 
-        .btn-success:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(67,160,71,0.4);
-        }
-
-        .btn-warning {
-            background: linear-gradient(135deg, #fb8c00 0%, #e65100 100%);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 10px;
-            font-size: 1em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-warning:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(251,140,0,0.4);
-        }
+        .upute-box ol li strong { color: #6B1A6B; }
 
         /* ===== SEARCH ===== */
         .search-bar {
@@ -227,7 +171,6 @@
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             margin-bottom: 20px;
-            position: relative;
         }
 
         .search-bar input {
@@ -235,16 +178,11 @@
             border: none;
             font-size: 1em;
             outline: none;
-            padding-right: 30px;
             color: #333;
         }
 
         /* ===== BRAND LIST ===== */
-        .brand-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+        .brand-list { display: flex; flex-direction: column; gap: 12px; }
 
         .brand-card {
             background: white;
@@ -257,26 +195,11 @@
             transition: all 0.2s;
         }
 
-        .brand-card:hover {
-            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
-            transform: translateY(-2px);
-        }
+        .brand-card:hover { box-shadow: 0 5px 20px rgba(0,0,0,0.12); transform: translateY(-2px); }
+        .brand-card-info h3 { color: #6B1A6B; font-size: 1.1em; margin-bottom: 4px; }
+        .brand-card-info p { color: #888; font-size: 0.85em; }
 
-        .brand-card-info h3 {
-            color: #6B1A6B;
-            font-size: 1.1em;
-            margin-bottom: 4px;
-        }
-
-        .brand-card-info p {
-            color: #888;
-            font-size: 0.85em;
-        }
-
-        .brand-card-actions {
-            display: flex;
-            gap: 8px;
-        }
+        .brand-card-actions { display: flex; gap: 8px; }
 
         .btn-edit {
             background: #f3e5f5;
@@ -340,9 +263,7 @@
             border-bottom: 2px solid #f0f0f0;
         }
 
-        .form-group {
-            margin-bottom: 16px;
-        }
+        .form-group { margin-bottom: 16px; }
 
         .form-group label {
             display: block;
@@ -367,15 +288,12 @@
         .form-group textarea:focus {
             outline: none;
             border-color: #6B1A6B;
-            box-shadow: 0 0 0 3px rgba(107, 26, 107, 0.1);
+            box-shadow: 0 0 0 3px rgba(107,26,107,0.1);
         }
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 70px;
-        }
+        .form-group textarea { resize: vertical; min-height: 70px; }
 
-        /* ===== SERVISI SEKCIJA ===== */
+        /* ===== SERVISI ===== */
         .servisi-section {
             background: #f8f9fa;
             border-radius: 12px;
@@ -383,14 +301,7 @@
             margin-bottom: 16px;
         }
 
-        .servisi-section h3 {
-            color: #0B2D72;
-            margin-bottom: 15px;
-            font-size: 1em;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .servisi-section h3 { color: #6B1A6B; margin-bottom: 15px; font-size: 1em; }
 
         .servis-block {
             background: white;
@@ -398,7 +309,6 @@
             border-radius: 10px;
             padding: 16px;
             margin-bottom: 12px;
-            position: relative;
         }
 
         .servis-block-header {
@@ -408,11 +318,7 @@
             margin-bottom: 12px;
         }
 
-        .servis-block-header span {
-            font-weight: 700;
-            color: #6B1A6B;
-            font-size: 0.9em;
-        }
+        .servis-block-header span { font-weight: 700; color: #6B1A6B; font-size: 0.9em; }
 
         .btn-remove-servis {
             background: #ffebee;
@@ -464,10 +370,7 @@
             transition: all 0.3s;
         }
 
-        .btn-save:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(107, 26, 107, 0.4);
-        }
+        .btn-save:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(107,26,107,0.4); }
 
         .btn-cancel {
             background: #f5f5f5;
@@ -514,25 +417,59 @@
 
         .empty-state p { color: #888; font-size: 1.1em; }
 
-        /* ===== RESPONSIVE ===== */
+        /* ===== DOWNLOAD BANNER ===== */
+        .download-banner {
+            display: none;
+            background: white;
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border-left: 4px solid #43a047;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .download-banner.show { display: flex; }
+
+        .download-banner p { color: #333; font-size: 0.95em; }
+        .download-banner p strong { color: #2e7d32; }
+
+        .btn-download {
+            background: linear-gradient(135deg, #43a047 0%, #2e7d32 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 9px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s;
+            font-size: 0.95em;
+        }
+
+        .btn-download:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(67,160,71,0.4); }
+
         @media (max-width: 600px) {
             .stats-grid { grid-template-columns: repeat(3, 1fr); }
             .admin-header { flex-direction: column; gap: 15px; text-align: center; }
             .modal { padding: 25px 20px; }
             .stat-number { font-size: 1.8em; }
+            .download-banner { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== LOGIN SCREEN ===== -->
+    <!-- LOGIN -->
     <div id="loginScreen">
         <div class="login-box">
             <h1>🔧 HGspot</h1>
             <p>Admin Panel - Servisne Procedure</p>
-            <input 
-                type="password" 
-                id="passwordInput" 
+            <input
+                type="password"
+                id="passwordInput"
                 placeholder="••••"
                 onkeydown="if(event.key==='Enter') login()"
                 autofocus
@@ -542,7 +479,7 @@
         </div>
     </div>
 
-    <!-- ===== ADMIN PANEL ===== -->
+    <!-- ADMIN PANEL -->
     <div id="adminPanel">
 
         <!-- Header -->
@@ -570,21 +507,33 @@
             </div>
         </div>
 
+        <!-- Upute -->
+        <div class="upute-box">
+            <h3>📋 Kako dodati brand na stranicu:</h3>
+            <ol>
+                <li>Klikni <strong>➕ Dodaj Brand</strong> i popuni formu</li>
+                <li>Nakon spremanja klikni <strong>⬇️ Preuzmi brandDatabase.json</strong></li>
+                <li>Uploadaj preuzeti file na <strong>GitHub</strong> (zamijeni stari)</li>
+                <li>Pričekaj <strong>1-2 minute</strong> i brand se pojavljuje na stranici ✅</li>
+            </ol>
+        </div>
+
+        <!-- Download banner -->
+        <div class="download-banner" id="downloadBanner">
+            <p>✅ Baza ažurirana! <strong>Preuzmi JSON i uploadaj na GitHub.</strong></p>
+            <button class="btn-download" onclick="downloadJSON()">⬇️ Preuzmi brandDatabase.json</button>
+        </div>
+
         <!-- Akcije -->
         <div class="action-bar">
             <button class="btn-primary" onclick="openAddModal()">➕ Dodaj Brand</button>
-            <button class="btn-success" onclick="exportJSON()">📤 Export JSON</button>
-            <label class="btn-warning" style="cursor:pointer;">
-                📥 Import JSON
-                <input type="file" accept=".json" onchange="importJSON(event)" style="display:none;">
-            </label>
         </div>
 
         <!-- Pretraga -->
         <div class="search-bar">
-            <input 
-                type="text" 
-                id="adminSearch" 
+            <input
+                type="text"
+                id="adminSearch"
                 placeholder="🔍  Pretraži brandove..."
                 oninput="filterBrands()"
             >
@@ -595,12 +544,11 @@
 
     </div>
 
-    <!-- ===== MODAL ZA DODAVANJE / UREĐIVANJE ===== -->
+    <!-- MODAL -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
             <h2 id="modalTitle">➕ Dodaj Novi Brand</h2>
 
-            <!-- Brand naziv -->
             <div class="form-group">
                 <label>Naziv Branda *</label>
                 <input type="text" id="brandName" placeholder="npr. Samsung">
@@ -608,9 +556,7 @@
 
             <!-- Servisi -->
             <div class="servisi-section">
-                <h3>
-                    🏢 Servisi
-                </h3>
+                <h3>🏢 Servisi</h3>
                 <div id="servisiContainer"></div>
                 <button class="btn-add-servis" onclick="addServisBlock()">➕ Dodaj još jedan servis</button>
             </div>
@@ -628,7 +574,6 @@
                 <input type="text" id="brandWebsite" placeholder="https://www.example.com">
             </div>
 
-            <!-- Akcije -->
             <div class="modal-actions">
                 <button class="btn-save" onclick="saveBrand()">💾 Spremi Brand</button>
                 <button class="btn-cancel" onclick="closeModal()">Odustani</button>
@@ -636,12 +581,11 @@
         </div>
     </div>
 
-    <!-- Toast notifikacija -->
     <div class="toast" id="toast"></div>
 
     <script>
-        // ===== KONSTANTE =====
         const ADMIN_PASSWORD = '2233';
+        const STORAGE_KEY = 'hgspot_brandDatabase';
         let brandDatabase = [];
         let editingIndex = -1;
 
@@ -665,32 +609,64 @@
             document.getElementById('passwordInput').value = '';
         }
 
-        // ===== UČITAVANJE BAZE =====
+        // ===== UČITAVANJE =====
+        // Redosljed: 1. localStorage, 2. brandDatabase.json
         async function loadDatabase() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                try {
+                    brandDatabase = JSON.parse(saved);
+                    console.log(`✅ Učitano iz localStorage: ${brandDatabase.length} brandova`);
+                    renderBrandList();
+                    updateStats();
+                    return;
+                } catch(e) {
+                    console.warn('⚠️ Greška pri čitanju localStorage');
+                }
+            }
+
+            // Fallback - učitaj iz JSON filea
             try {
                 const response = await fetch('brandDatabase.json?t=' + Date.now());
-                if (!response.ok) throw new Error('Nije moguće učitati');
+                if (!response.ok) throw new Error();
                 brandDatabase = await response.json();
-                console.log(`✅ Učitano ${brandDatabase.length} brandova`);
-            } catch (error) {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(brandDatabase));
+                console.log(`✅ Učitano iz JSON: ${brandDatabase.length} brandova`);
+            } catch (e) {
                 console.warn('⚠️ Nije moguće učitati JSON, krećem s praznom bazom');
                 brandDatabase = [];
             }
+
             renderBrandList();
             updateStats();
+        }
+
+        // ===== SPREMI U LOCALSTORAGE =====
+        function saveToStorage() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(brandDatabase));
+        }
+
+        // ===== DOWNLOAD JSON =====
+        function downloadJSON() {
+            const json = JSON.stringify(brandDatabase, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'brandDatabase.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('📥 brandDatabase.json preuzet!', 'success');
         }
 
         // ===== STATISTIKA =====
         function updateStats() {
             document.getElementById('statBrands').textContent = brandDatabase.length;
-            
-            let totalServisi = 0;
-            let totalDocs = 0;
+            let totalServisi = 0, totalDocs = 0;
             brandDatabase.forEach(b => {
                 totalServisi += (b.servisi || []).length;
                 totalDocs += (b.documents || []).length;
             });
-            
             document.getElementById('statServisi').textContent = totalServisi;
             document.getElementById('statDocs').textContent = totalDocs;
         }
@@ -698,7 +674,7 @@
         // ===== RENDERIRANJE LISTE =====
         function renderBrandList(filter = '') {
             const list = document.getElementById('brandList');
-            const filtered = brandDatabase.filter(b => 
+            const filtered = brandDatabase.filter(b =>
                 b.brand.toLowerCase().includes(filter.toLowerCase())
             );
 
@@ -710,7 +686,7 @@
                 return;
             }
 
-            list.innerHTML = filtered.map((brand, idx) => {
+            list.innerHTML = filtered.map(brand => {
                 const realIdx = brandDatabase.indexOf(brand);
                 const servisCount = (brand.servisi || []).length;
                 const docCount = (brand.documents || []).length;
@@ -732,7 +708,7 @@
             renderBrandList(document.getElementById('adminSearch').value);
         }
 
-        // ===== MODAL - OTVORI ZA DODAVANJE =====
+        // ===== MODAL - DODAJ =====
         function openAddModal() {
             editingIndex = -1;
             document.getElementById('modalTitle').textContent = '➕ Dodaj Novi Brand';
@@ -744,23 +720,17 @@
             document.getElementById('modalOverlay').classList.add('active');
         }
 
-        // ===== MODAL - OTVORI ZA UREĐIVANJE =====
+        // ===== MODAL - UREDI =====
         function openEditModal(idx) {
             editingIndex = idx;
             const brand = brandDatabase[idx];
-
             document.getElementById('modalTitle').textContent = '✏️ Uredi Brand';
             document.getElementById('brandName').value = brand.brand;
             document.getElementById('brandWebsite').value = brand.website || '';
-
-            // Servisi
             document.getElementById('servisiContainer').innerHTML = '';
             (brand.servisi || []).forEach(s => addServisBlock(s));
-
-            // Dokumenti
             document.getElementById('documentsContainer').innerHTML = '';
             (brand.documents || []).forEach(d => addDocumentBlock(d));
-
             document.getElementById('modalOverlay').classList.add('active');
         }
 
@@ -781,21 +751,20 @@
                 </div>
                 <div class="form-group">
                     <label>Naziv servisa *</label>
-                    <input type="text" class="servis-naziv" placeholder="npr. Samsung Ovlašteni Servis Zagreb" value="${data ? escapeHtml(data.service) : ''}">
+                    <input type="text" class="servis-naziv" placeholder="npr. Samsung Ovlašteni Servis Zagreb" value="${data ? escHtml(data.service) : ''}">
                 </div>
                 <div class="form-group">
                     <label>Adresa *</label>
-                    <input type="text" class="servis-adresa" placeholder="npr. Vukovarska 78, Zagreb" value="${data ? escapeHtml(data.address) : ''}">
+                    <input type="text" class="servis-adresa" placeholder="npr. Vukovarska 78, Zagreb" value="${data ? escHtml(data.address) : ''}">
                 </div>
                 <div class="form-group">
                     <label>Kontakt *</label>
-                    <input type="text" class="servis-kontakt" placeholder="npr. info@samsung.hr, 01 234 5678" value="${data ? escapeHtml(data.kontakt) : ''}">
+                    <input type="text" class="servis-kontakt" placeholder="npr. info@samsung.hr, 01 234 5678" value="${data ? escHtml(data.kontakt) : ''}">
                 </div>
                 <div class="form-group">
                     <label>Napomena</label>
-                    <input type="text" class="servis-napomena" placeholder="npr. Radno vrijeme: Pon-Pet 8-16h" value="${data ? escapeHtml(data.napomena) : ''}">
-                </div>
-            `;
+                    <input type="text" class="servis-napomena" placeholder="npr. Radno vrijeme: Pon-Pet 8-16h" value="${data ? escHtml(data.napomena) : ''}">
+                </div>`;
             container.appendChild(div);
             renumberServisi();
         }
@@ -806,8 +775,7 @@
         }
 
         function renumberServisi() {
-            const blocks = document.querySelectorAll('#servisiContainer .servis-block');
-            blocks.forEach((b, i) => {
+            document.querySelectorAll('#servisiContainer .servis-block').forEach((b, i) => {
                 b.querySelector('.servis-block-header span').textContent = `🏢 Servis ${i + 1}`;
             });
         }
@@ -824,13 +792,12 @@
                 </div>
                 <div class="form-group">
                     <label>Naziv dokumenta *</label>
-                    <input type="text" class="doc-naziv" placeholder="npr. Samsung_Servisni_Obrazac.pdf" value="${data ? escapeHtml(data.name) : ''}">
+                    <input type="text" class="doc-naziv" placeholder="npr. Samsung_Servisni_Obrazac.pdf" value="${data ? escHtml(data.name) : ''}">
                 </div>
                 <div class="form-group">
                     <label>URL / Putanja *</label>
-                    <input type="text" class="doc-url" placeholder="npr. documents/Samsung_Servisni_Obrazac.pdf" value="${data ? escapeHtml(data.url) : ''}">
-                </div>
-            `;
+                    <input type="text" class="doc-url" placeholder="npr. documents/Samsung_Servisni_Obrazac.pdf" value="${data ? escHtml(data.url) : ''}">
+                </div>`;
             container.appendChild(div);
         }
 
@@ -843,7 +810,6 @@
                 return;
             }
 
-            // Skupi servise
             const servisiBlocks = document.querySelectorAll('#servisiContainer .servis-block');
             const servisi = [];
             let valid = true;
@@ -853,33 +819,22 @@
                 const adresa = block.querySelector('.servis-adresa').value.trim();
                 const kontakt = block.querySelector('.servis-kontakt').value.trim();
                 const napomena = block.querySelector('.servis-napomena').value.trim();
-
-                if (!naziv || !adresa || !kontakt) {
-                    showToast('❌ Naziv, adresa i kontakt su obavezni za svaki servis!', 'error');
-                    valid = false;
-                    return;
-                }
-
-                servisi.push({ service: naziv, address: adresa, kontakt: kontakt, napomena: napomena });
+                if (!naziv || !adresa || !kontakt) { valid = false; return; }
+                servisi.push({ service: naziv, address: adresa, kontakt, napomena });
             });
 
-            if (!valid) return;
-            if (servisi.length === 0) {
-                showToast('❌ Dodaj barem jedan servis!', 'error');
-                return;
-            }
+            if (!valid) { showToast('❌ Naziv, adresa i kontakt su obavezni!', 'error'); return; }
+            if (servisi.length === 0) { showToast('❌ Dodaj barem jedan servis!', 'error'); return; }
 
-            // Skupi dokumente
             const docBlocks = document.querySelectorAll('#documentsContainer .document-block');
             const documents = [];
             docBlocks.forEach(block => {
                 const naziv = block.querySelector('.doc-naziv').value.trim();
                 const url = block.querySelector('.doc-url').value.trim();
-                if (naziv && url) documents.push({ name: naziv, url: url });
+                if (naziv && url) documents.push({ name: naziv, url });
             });
 
             const website = document.getElementById('brandWebsite').value.trim() || null;
-
             const brandObj = { brand: name, servisi, documents, website };
 
             if (editingIndex === -1) {
@@ -890,6 +845,9 @@
                 showToast('✅ Brand ažuriran!', 'success');
             }
 
+            // Spremi u localStorage i prikaži download banner
+            saveToStorage();
+            showDownloadBanner();
             closeModal();
             renderBrandList(document.getElementById('adminSearch').value);
             updateStats();
@@ -900,45 +858,17 @@
             const name = brandDatabase[idx].brand;
             if (confirm(`Jesi li siguran da želiš obrisati "${name}"?`)) {
                 brandDatabase.splice(idx, 1);
+                saveToStorage();
+                showDownloadBanner();
                 renderBrandList(document.getElementById('adminSearch').value);
                 updateStats();
                 showToast(`🗑️ "${name}" obrisan!`, 'success');
             }
         }
 
-        // ===== EXPORT JSON =====
-        function exportJSON() {
-            const json = JSON.stringify(brandDatabase, null, 2);
-            const blob = new Blob([json], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'brandDatabase.json';
-            a.click();
-            URL.revokeObjectURL(url);
-            showToast(`📤 Exportano ${brandDatabase.length} brandova!`, 'success');
-        }
-
-        // ===== IMPORT JSON =====
-        function importJSON(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                try {
-                    const data = JSON.parse(e.target.result);
-                    if (!Array.isArray(data)) throw new Error('Nije valjan format');
-                    brandDatabase = data;
-                    renderBrandList();
-                    updateStats();
-                    showToast(`📥 Importano ${brandDatabase.length} brandova!`, 'success');
-                } catch (err) {
-                    showToast('❌ Greška: Nije valjan JSON file!', 'error');
-                }
-            };
-            reader.readAsText(file);
-            event.target.value = '';
+        // ===== DOWNLOAD BANNER =====
+        function showDownloadBanner() {
+            document.getElementById('downloadBanner').classList.add('show');
         }
 
         // ===== TOAST =====
@@ -950,7 +880,7 @@
         }
 
         // ===== HELPER =====
-        function escapeHtml(str) {
+        function escHtml(str) {
             if (!str) return '';
             return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
         }
