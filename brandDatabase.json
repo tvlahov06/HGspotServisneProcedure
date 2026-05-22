@@ -6,19 +6,25 @@
         "service": "SmartSmart servis",
         "address": "Mažuranićevo šetalište 40, 21000 Split",
         "kontakt": "info@smartservice.hr",
-        "napomena": "Svi uređaji se šalju u servis"
+        "napomena": "Poslati mail za prikup"
       },
       {
         "service": "Smart Smart servis",
         "address": "Vice Vukova 6, Arena Centar, Samsung Experience Store, 10000 Zagreb",
         "kontakt": "info@smartservice.hr",
-        "napomena": "Svi uređaji se šalju u servis"
+        "napomena": "Poslati mail za prikup"
       },
       {
         "service": "Smart Smart centralni servis",
         "address": "Jaruščica 4, Arena Park, 10000 Zagreb",
         "kontakt": "info@smartservice.hr",
-        "napomena": "Svi uređaji se šalju u servis"
+        "napomena": "Poslati mail za prikup"
+      },
+      {
+        "service": "Mobidom servis",
+        "address": "Supilova ulica 7, 10000 Zagreb",
+        "kontakt": "info@mobidom.hr",
+        "napomena": "Poslati mail za prikup"
       }
     ],
     "documents": [],
