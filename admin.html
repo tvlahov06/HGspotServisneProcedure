@@ -689,8 +689,8 @@
         const ADMIN_PASSWORD = '2233';
         const STORAGE_KEY = 'hgspot_brandDatabase';
         const GITHUB_SETTINGS_KEY = 'hgspot_github_settings';
-        const GITHUB_USERNAME = 'tvlahov06';
-        const GITHUB_REPO = 'HGspotServisneProcedure';
+        const GITHUB_USERNAME = 'UPISI_GITHUB_USERNAME';
+        const GITHUB_REPO = 'UPISI_NAZIV_REPOZITORIJA';
 
         let brandDatabase = [];
         let editingIndex = -1;
@@ -798,7 +798,7 @@
                 const data = await githubFetch('GET', 'brandDatabase.json');
                 fileSHA = data.sha; // Spremi SHA za buduće updateove
 
-                const decoded = atob(data.content.replace(/\n/g, ''));
+                const decoded = decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))));
                 brandDatabase = JSON.parse(decoded);
 
                 // Spremi lokalno kao backup
@@ -830,7 +830,10 @@
         async function saveToGithub() {
             const settings = getGithubSettings();
             const jsonContent = JSON.stringify(brandDatabase, null, 2);
-            const encoded = btoa(unescape(encodeURIComponent(jsonContent)));
+            // UTF-8 enkodiranje koje podržava hrvatska slova (š, đ, č, ć, ž)
+            const uint8Array = new TextEncoder().encode(jsonContent);
+            const binaryString = Array.from(uint8Array).map(b => String.fromCharCode(b)).join('');
+            const encoded = btoa(binaryString);
 
             const body = {
                 message: `Admin: ažuriranje brandDatabase.json (${brandDatabase.length} brandova)`,
