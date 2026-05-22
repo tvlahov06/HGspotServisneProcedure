@@ -190,5 +190,19 @@
     ],
     "documents": [],
     "website": "https://www.ksu.hr/prijava-kvara"
+  },
+  {
+    "brand": "Corsair",
+    "servisi": [
+      {
+        "service": "EZY Infotech d.o.o.",
+        "dobavljac": "EZY Infotech d.o.o.",
+        "address": "Ul. Miroslava Krleže 28, 40000, Čakovec",
+        "kontakt": "servis@ezy.hr; 040/492-244",
+        "napomena": "Slanje na HGSPOT trošak"
+      }
+    ],
+    "documents": [],
+    "website": null
   }
 ]
