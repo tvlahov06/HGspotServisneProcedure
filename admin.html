@@ -897,7 +897,7 @@
                     <div class="brand-card">
                         <div class="brand-card-info">
                             <h3>${brand.brand}</h3>
-                            <p>${servisCount} servis${servisCount !== 1 ? 'a' : ''} · ${docCount} dokument${docCount !== 1 ? 'a' : ''}${brand.website ? ' · <a href="' + brand.website + '" target="_blank" style="color:#9B2D8E;">' + brand.website + '</a>' : ''}</p>
+                            <p>${servisCount} servis${servisCount !== 1 ? 'a' : ''} · ${docCount} dokument${docCount !== 1 ? 'a' : ''} · ${brand.website ? '1' : '0'} website</p>
                         </div>
                         <div class="brand-card-actions">
                             <button class="btn-edit" onclick="openEditModal(${realIdx})">✏️ Uredi</button>
