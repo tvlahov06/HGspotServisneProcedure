@@ -11,5 +11,24 @@
     ],
     "documents": [],
     "website": null
+  },
+  {
+    "brand": "Samsung",
+    "servisi": [
+      {
+        "service": "SmartSmart servis",
+        "address": "Mažuranićevo šetalište 40, 21000 Split",
+        "kontakt": "info@smartservice.hr",
+        "napomena": "Svi uređaji se šalju u servis"
+      },
+      {
+        "service": "Smart Smart servis",
+        "address": "Vice Vukova 6, Arena Centar, Samsung Experience Store, 10000 Zagreb",
+        "kontakt": "info@smartservice.hr",
+        "napomena": "Svi uređaji se šalju u servis"
+      }
+    ],
+    "documents": [],
+    "website": null
   }
 ]
