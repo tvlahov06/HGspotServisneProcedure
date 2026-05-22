@@ -1,23 +1,25 @@
-const CACHE_NAME = 'hgspot-servisi-v1';
+// Promijeni verziju svaki put kad uploadaš promjene!
+const CACHE_NAME = 'hgspot-servisi-v2';
+
+// Samo statični fileovi koji se rijetko mijenjaju
 const urlsToCache = [
     './',
     './index.html',
-    './script.js',
     './manifest.json',
     './icon-192.png',
     './icon-512.png',
     './favicon.ico'
 ];
 
-// Instalacija - cache fileova (BEZ brandDatabase.json!)
+// Fileovi koji se NIKAD ne keširaju - uvijek svježi s mreže
+const noCacheFiles = ['admin.html', 'script.js', 'brandDatabase.json'];
+
+// Instalacija
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then(cache => {
-                console.log('✅ HGspot SW: Cache otvoren');
-                return cache.addAll(urlsToCache);
-            })
-            .catch(err => console.log('❌ HGspot SW: Cache greška:', err))
+            .then(cache => cache.addAll(urlsToCache))
+            .catch(err => console.log('❌ SW Cache greška:', err))
     );
     self.skipWaiting();
 });
@@ -25,26 +27,24 @@ self.addEventListener('install', event => {
 // Aktivacija - briše stare cacheove
 self.addEventListener('activate', event => {
     event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
+        caches.keys().then(cacheNames =>
+            Promise.all(
                 cacheNames
                     .filter(name => name !== CACHE_NAME)
-                    .map(name => {
-                        console.log('🗑️ HGspot SW: Brišem stari cache:', name);
-                        return caches.delete(name);
-                    })
-            );
-        })
+                    .map(name => caches.delete(name))
+            )
+        )
     );
     self.clients.claim();
 });
 
-// Fetch - admin.html i brandDatabase.json UVIJEK s mreže, ostalo iz cachea
+// Fetch
 self.addEventListener('fetch', event => {
     const url = new URL(event.request.url);
+    const filename = url.pathname.split('/').pop();
 
-    // admin.html i brandDatabase.json - uvijek network, nikad cache
-    if (url.pathname.endsWith('admin.html') || url.pathname.endsWith('brandDatabase.json')) {
+    // Nikad ne kešira ove fileove
+    if (noCacheFiles.includes(filename)) {
         event.respondWith(
             fetch(event.request, { cache: 'no-store' })
                 .catch(() => caches.match(event.request))
@@ -52,22 +52,19 @@ self.addEventListener('fetch', event => {
         return;
     }
 
-    // Ostali fileovi - cache first
+    // Ostalo - cache first
     event.respondWith(
         caches.match(event.request)
             .then(response => {
                 if (response) return response;
-                return fetch(event.request)
-                    .then(response => {
-                        if (!response || response.status !== 200 || response.type !== 'basic') {
-                            return response;
-                        }
-                        const responseClone = response.clone();
-                        caches.open(CACHE_NAME).then(cache => {
-                            cache.put(event.request, responseClone);
-                        });
+                return fetch(event.request).then(response => {
+                    if (!response || response.status !== 200 || response.type !== 'basic') {
                         return response;
-                    });
+                    }
+                    const clone = response.clone();
+                    caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+                    return response;
+                });
             })
     );
 });
