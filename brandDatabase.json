@@ -179,6 +179,13 @@
         "address": "Dr. Jurja Dobrile 50, 10410 Velika Gorica",
         "kontakt": "servis@ksu.hr; 01/6222-122",
         "napomena": "poslati mail za prikup na nalog@dpd.hr"
+      },
+      {
+        "service": "Microline",
+        "dobavljac": "Microline, Also C, Eurotrade",
+        "address": "Slavonska avenija 26/9, 10000 Zagreb",
+        "kontakt": "servis@microline.hr; 01/2797-730",
+        "napomena": "Slanje na trošak primatelja - OEX"
       }
     ],
     "documents": [],
