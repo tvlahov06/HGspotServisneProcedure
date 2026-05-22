@@ -1,18 +1,5 @@
 [
   {
-    "brand": "Primjer Brand",
-    "servisi": [
-      {
-        "service": "Naziv servisa",
-        "address": "Adresa, Grad",
-        "kontakt": "info@example.hr, 01 234 5678",
-        "napomena": "Radno vrijeme: Pon-Pet 8-16h"
-      }
-    ],
-    "documents": [],
-    "website": null
-  },
-  {
     "brand": "Samsung",
     "servisi": [
       {
