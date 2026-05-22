@@ -358,5 +358,33 @@
     ],
     "documents": [],
     "website": null
+  },
+  {
+    "brand": "Speedlink",
+    "servisi": [
+      {
+        "service": "Feniks Info d.o.o.",
+        "dobavljac": "Feniks Info d.o.o.",
+        "address": "Slavonska avenija 72, 10000 Zagreb",
+        "kontakt": "servis@feniks-info.hr; 01/639-5281",
+        "napomena": "Svi uređaji se šalju u servis"
+      }
+    ],
+    "documents": [],
+    "website": null
+  },
+  {
+    "brand": "Rampage",
+    "servisi": [
+      {
+        "service": "Feniks Info d.o.o.",
+        "dobavljac": "Feniks Info d.o.o.",
+        "address": "Slavonska avenija 72, 10000 Zagreb",
+        "kontakt": "servis@feniks-info.hr; 01/639-5281",
+        "napomena": "Svi uređaji se šalju u servis"
+      }
+    ],
+    "documents": [],
+    "website": null
   }
 ]
