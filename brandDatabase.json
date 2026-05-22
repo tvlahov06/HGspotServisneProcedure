@@ -29,5 +29,19 @@
     ],
     "documents": [],
     "website": null
+  },
+  {
+    "brand": "AOC monitori",
+    "servisi": [
+      {
+        "service": "Inpro d.o.o.",
+        "dobavljac": "Microline, Ezy",
+        "address": "Miroslava Krleže 28, 40000 Čakovec",
+        "kontakt": "inpro@inpro.hr; 040/492-229",
+        "napomena": "Slanje na trošak primatelja - OEX. Poslati mail za prikup uređaja."
+      }
+    ],
+    "documents": [],
+    "website": null
   }
 ]
