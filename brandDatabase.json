@@ -85,5 +85,19 @@
     ],
     "documents": [],
     "website": null
+  },
+  {
+    "brand": "Asus laptopi",
+    "servisi": [
+      {
+        "service": "Microline",
+        "dobavljac": "Msan, Microline, Also Croatia",
+        "address": "Slavonska avenija 26/9, 10000 Zagreb",
+        "kontakt": "servis@microline.hr; 01/2797-730",
+        "napomena": "Nalog preko Asus RMA obrasca"
+      }
+    ],
+    "documents": [],
+    "website": "https://eu-rma.asus.com/hr/info/warranty"
   }
 ]
