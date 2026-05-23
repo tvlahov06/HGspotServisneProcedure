@@ -428,5 +428,19 @@
     ],
     "documents": [],
     "website": null
+  },
+  {
+    "brand": "Garmin",
+    "servisi": [
+      {
+        "service": "Garmin Hrvatska d.o.o.",
+        "dobavljac": "Garmin Hrvatska d.o.o.",
+        "address": "Karlovačka cesta 4k, 10000 Zagreb",
+        "kontakt": "garmin.hrvatska@garmin.com; stipe.ivancic@garmin.com;",
+        "napomena": "Slanje na HGSPOT trošak, Garmin vraća o svom"
+      }
+    ],
+    "documents": [],
+    "website": null
   }
 ]
