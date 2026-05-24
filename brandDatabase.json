@@ -1054,5 +1054,19 @@
         "documents": []
       }
     ]
+  },
+  {
+    "brand": "Krups",
+    "servisi": [
+      {
+        "service": "Elekom servis",
+        "dobavljac": "",
+        "address": "Klanječka ul. 52, 10000 Zagreb",
+        "kontakt": "info@elekom-servis.hr; 01/4814-492",
+        "napomena": "Ispuniti obrazac za prijavu kvara",
+        "website": "https://elekom-servis.hr/prijava-kvara/",
+        "documents": []
+      }
+    ]
   }
 ]
