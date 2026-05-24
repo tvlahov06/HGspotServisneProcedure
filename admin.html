@@ -356,6 +356,23 @@
         .page-btn.active { background: #6B1A6B; color: white; border-color: #6B1A6B; }
         .page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
+        /* ===== UPLOAD AREA ===== */
+        .doc-upload-area {
+            border: 2px dashed #ce93d8;
+            border-radius: 9px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #faf5fb;
+        }
+
+        .doc-upload-area:hover { background: #f3e5f5; border-color: #9B2D8E; }
+        .doc-upload-icon { font-size: 1.8em; margin-bottom: 6px; }
+        .doc-upload-text { font-size: 0.95em; font-weight: 600; color: #6B1A6B; }
+        .doc-upload-hint { font-size: 0.8em; color: #aaa; margin-top: 3px; }
+        .doc-existing-info { font-size: 0.85em; color: #555; padding: 8px 0 4px; }
+
         /* ===== MODAL ===== */
         .modal-overlay {
             display: none;
@@ -905,6 +922,29 @@
             updateStats();
         }
 
+        // ===== UPLOAD FILE NA GITHUB =====
+        async function uploadFileToGithub(fileName, base64Content) {
+            const path = `documents/${fileName}`;
+
+            // Provjeri postoji li već file (treba SHA za update)
+            let existingSha = null;
+            try {
+                const existing = await githubFetch('GET', path);
+                existingSha = existing.sha;
+            } catch(e) {
+                // File ne postoji - novi upload, OK
+            }
+
+            const body = {
+                message: `Upload dokumenta: ${fileName}`,
+                content: base64Content
+            };
+
+            if (existingSha) body.sha = existingSha;
+
+            return await githubFetch('PUT', path, body);
+        }
+
         // ===== SPREMI NA GITHUB =====
         async function saveToGithub() {
             const settings = getGithubSettings();
@@ -1150,22 +1190,67 @@
         // ===== DOKUMENT BLOK =====
         function addDocumentBlock(data = null) {
             const container = document.getElementById('documentsContainer');
+            const blockId = 'doc_' + Date.now() + '_' + Math.random().toString(36).substr(2,5);
             const div = document.createElement('div');
             div.className = 'servis-block document-block';
-            div.innerHTML = `
-                <div class="servis-block-header">
-                    <span>📄 Dokument</span>
-                    <button class="btn-remove-servis" onclick="removeBlock(this)">✕ Ukloni</button>
-                </div>
-                <div class="form-group">
-                    <label>Naziv dokumenta *</label>
-                    <input type="text" class="doc-naziv" placeholder="npr. Samsung_Servisni_Obrazac.pdf" value="${data ? escHtml(data.name) : ''}">
-                </div>
-                <div class="form-group">
-                    <label>URL / Putanja *</label>
-                    <input type="text" class="doc-url" placeholder="npr. documents/Samsung_Servisni_Obrazac.pdf" value="${data ? escHtml(data.url) : ''}">
-                </div>`;
+            div.dataset.blockId = blockId;
+
+            // Ako je postojeći dokument (edit mode) - prikaži naziv i putanju
+            if (data) {
+                div.innerHTML = `
+                    <div class="servis-block-header">
+                        <span>📄 ${escHtml(data.name)}</span>
+                        <button class="btn-remove-servis" onclick="removeBlock(this)">✕ Ukloni</button>
+                    </div>
+                    <p class="doc-existing-info">📎 Postojeći dokument · <span style="color:#888;font-size:0.9em;">${escHtml(data.url)}</span></p>
+                    <input type="hidden" class="doc-naziv" value="${escHtml(data.name)}">
+                    <input type="hidden" class="doc-url" value="${escHtml(data.url)}">
+                    <input type="hidden" class="doc-file-content" value="">`;
+            } else {
+                div.innerHTML = `
+                    <div class="servis-block-header">
+                        <span>📄 Dokument</span>
+                        <button class="btn-remove-servis" onclick="removeBlock(this)">✕ Ukloni</button>
+                    </div>
+                    <div class="doc-upload-area" onclick="document.getElementById('${blockId}_input').click()">
+                        <div class="doc-upload-icon">📎</div>
+                        <div class="doc-upload-text">Klikni za odabir dokumenta</div>
+                        <div class="doc-upload-hint">PDF, Excel, Word...</div>
+                    </div>
+                    <input type="file" id="${blockId}_input" style="display:none" accept=".pdf,.xlsx,.xls,.doc,.docx" onchange="handleFileSelect(this, '${blockId}')">
+                    <input type="hidden" class="doc-naziv" value="">
+                    <input type="hidden" class="doc-url" value="">
+                    <input type="hidden" class="doc-file-content" value="">`;
+            }
+
             container.appendChild(div);
+        }
+
+        // ===== HANDLE FILE SELECT =====
+        function handleFileSelect(input, blockId) {
+            const file = input.files[0];
+            if (!file) return;
+
+            const block = document.querySelector(`[data-block-id="${blockId}"]`);
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                // base64 sadržaj filea (bez data:...;base64, prefiksa)
+                const base64 = e.target.result.split(',')[1];
+                const url = `documents/${file.name}`;
+
+                block.querySelector('.doc-naziv').value = file.name;
+                block.querySelector('.doc-url').value = url;
+                block.querySelector('.doc-file-content').value = base64;
+
+                // Ažuriraj UI
+                block.querySelector('.doc-upload-area').innerHTML = `
+                    <div class="doc-upload-icon">✅</div>
+                    <div class="doc-upload-text" style="color:#2e7d32;font-weight:600;">${file.name}</div>
+                    <div class="doc-upload-hint">${(file.size / 1024).toFixed(1)} KB · Klikni za promjenu</div>`;
+            };
+
+            reader.readAsDataURL(file);
         }
 
         // ===== SPREMI BRAND =====
@@ -1192,10 +1277,19 @@
 
             const docBlocks = document.querySelectorAll('#documentsContainer .document-block');
             const documents = [];
+            const filesToUpload = [];
+
             docBlocks.forEach(block => {
                 const naziv = block.querySelector('.doc-naziv').value.trim();
                 const url = block.querySelector('.doc-url').value.trim();
-                if (naziv && url) documents.push({ name: naziv, url });
+                const fileContent = block.querySelector('.doc-file-content').value;
+                if (naziv && url) {
+                    documents.push({ name: naziv, url });
+                    // Ako ima file content - treba uploadati
+                    if (fileContent) {
+                        filesToUpload.push({ name: naziv, url, content: fileContent });
+                    }
+                }
             });
 
             const website = document.getElementById('brandWebsite').value.trim() || null;
@@ -1213,6 +1307,16 @@
             showSaving('Spremam na GitHub...');
 
             try {
+                // 1. Upload novih fileova ako postoje
+                if (filesToUpload.length > 0) {
+                    for (const file of filesToUpload) {
+                        showSaving(`Uploadam ${file.name}...`);
+                        await uploadFileToGithub(file.name, file.content);
+                    }
+                }
+
+                // 2. Spremi brandDatabase.json
+                showSaving('Ažuriram bazu podataka...');
                 await saveToGithub();
                 hideSaving();
                 showToast(editingIndex === -1 ? '✅ Brand dodan i spreman na GitHubu!' : '✅ Brand ažuriran na GitHubu!', 'success');
@@ -1221,7 +1325,6 @@
                 hideSaving();
                 showToast(`❌ GitHub greška: ${error.message}`, 'error');
                 console.error(error);
-                // Vrati promjenu ako je greška
                 if (editingIndex === -1) {
                     brandDatabase.pop();
                 } else {
