@@ -793,5 +793,19 @@
         "documents": []
       }
     ]
+  },
+  {
+    "brand": "Huawei",
+    "servisi": [
+      {
+        "service": "Insignium",
+        "dobavljac": "Mobis-electronic d.o.o.",
+        "address": "Rudeška cesta 146, 10000 Zagreb",
+        "kontakt": "vrbani@insignum.hr; 098/660-006",
+        "napomena": "Ispuniti online obrazac",
+        "website": "https://insignum.hr/prikup/",
+        "documents": []
+      }
+    ]
   }
 ]
