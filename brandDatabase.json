@@ -722,5 +722,19 @@
         "documents": []
       }
     ]
+  },
+  {
+    "brand": "Motorola mobiteli",
+    "servisi": [
+      {
+        "service": "Tech Doctor",
+        "dobavljac": "Mobis-electronic d.o.o., MMM Agramservis",
+        "address": "Radnička cesta 1a, 10000 Zagreb",
+        "kontakt": "info@techdoctor.hr; 01/6188-513",
+        "napomena": "Poslati mail za prikup uređaja.",
+        "website": null,
+        "documents": []
+      }
+    ]
   }
 ]
