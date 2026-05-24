@@ -1124,5 +1124,19 @@
         "documents": []
       }
     ]
+  },
+  {
+    "brand": "Cubot",
+    "servisi": [
+      {
+        "service": "SE-MARK d.o.o.",
+        "dobavljac": "SE-MARK d.o.o.",
+        "address": "Bjelovarska 36a, 10000 Zagreb",
+        "kontakt": "servis@se-mark.hr; 01/2009-060",
+        "napomena": "Poslati mail za prikup uređaja",
+        "website": null,
+        "documents": []
+      }
+    ]
   }
 ]
