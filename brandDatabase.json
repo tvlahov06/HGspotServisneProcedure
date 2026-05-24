@@ -265,18 +265,20 @@
         "dobavljac": "Philips",
         "address": "Antuna Gustava Matoša 171, 21210 Solin",
         "kontakt": "info@singuli.hr; 021/579-099",
-        "napomena": "Poslati mail ili ispuniti online obrazac za prikup o trošku primatelja."
+        "napomena": "Poslati mail ili ispuniti online obrazac za prikup o trošku primatelja.",
+        "website": "https://portal.singuli.hr/PrijavaKvara",
+        "documents": []
       },
       {
         "service": "Singuli servis",
         "dobavljac": "Philips",
         "address": "Primorska 5, 10000 Zagreb",
         "kontakt": "info@singuli.hr; 01/660-1777",
-        "napomena": "Poslati mail ili ispuniti online obrazac za prikup o trošku primatelja."
+        "napomena": "Poslati mail ili ispuniti online obrazac za prikup o trošku primatelja.",
+        "website": "https://portal.singuli.hr/PrijavaKvara",
+        "documents": []
       }
-    ],
-    "documents": [],
-    "website": "https://portal.singuli.hr/PrijavaKvara"
+    ]
   },
   {
     "brand": "Remington",
