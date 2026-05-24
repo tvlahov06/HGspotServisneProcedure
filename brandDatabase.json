@@ -1528,5 +1528,19 @@
         "documents": []
       }
     ]
+  },
+  {
+    "brand": "iRobot Roomba",
+    "servisi": [
+      {
+        "service": "Eurorobot d.o.o.",
+        "dobavljac": "Eurorobot d.o.o.",
+        "address": "Nadinska ulica 11, 10010 Veliko Polje",
+        "kontakt": "servis@eurorobot.hr; 01/561-9242",
+        "napomena": "Poslati mail za prikup uređaja",
+        "website": null,
+        "documents": []
+      }
+    ]
   }
 ]
