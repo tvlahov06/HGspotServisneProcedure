@@ -1252,5 +1252,19 @@
         "documents": []
       }
     ]
+  },
+  {
+    "brand": "TCL TV",
+    "servisi": [
+      {
+        "service": "Supra Mea",
+        "dobavljac": "MMM Agramservis",
+        "address": "Maksimirska 129, 10000 Zagreb",
+        "kontakt": "info@supra-mea.hr; 01/2316-086",
+        "napomena": "Poslati mail za prikup",
+        "website": null,
+        "documents": []
+      }
+    ]
   }
 ]
