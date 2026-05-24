@@ -1138,5 +1138,19 @@
         "documents": []
       }
     ]
+  },
+  {
+    "brand": "Marshall",
+    "servisi": [
+      {
+        "service": "HGSpot servis",
+        "dobavljac": "Metro Company s.r.o.",
+        "address": "Ulica kneza Branimira 24, 10040 Zagreb - Dubrava",
+        "kontakt": "servis@hgspot.hr; 01/6611-511",
+        "napomena": "Slanje na naš centralni servis",
+        "website": null,
+        "documents": []
+      }
+    ]
   }
 ]
