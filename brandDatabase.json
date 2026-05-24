@@ -582,5 +582,89 @@
     ],
     "documents": [],
     "website": null
+  },
+  {
+    "brand": "Roline",
+    "servisi": [
+      {
+        "service": "Lost d.o.o.",
+        "dobavljac": "Lost d.o.o.",
+        "address": "Ulica Kreše Golika 7, 10000 Zagreb",
+        "kontakt": "servis@lost.hr; 01/8000-720",
+        "napomena": "Slanje na HGSPOT trošak."
+      }
+    ],
+    "documents": [],
+    "website": null
+  },
+  {
+    "brand": "Green Cell",
+    "servisi": [
+      {
+        "service": "Lost d.o.o.",
+        "dobavljac": "Lost d.o.o.",
+        "address": "Ulica Kreše Golika 7, 10000 Zagreb",
+        "kontakt": "servis@lost.hr; 01/8000-720",
+        "napomena": "Slanje na HGSPOT trošak."
+      }
+    ],
+    "documents": [],
+    "website": null
+  },
+  {
+    "brand": "1More",
+    "servisi": [
+      {
+        "service": "Lost d.o.o.",
+        "dobavljac": "Lost d.o.o.",
+        "address": "Ulica Kreše Golika 7, 10000 Zagreb",
+        "kontakt": "servis@lost.hr; 01/8000-720",
+        "napomena": "Slanje na HGSPOT trošak."
+      }
+    ],
+    "documents": [],
+    "website": null
+  },
+  {
+    "brand": "TP-Link",
+    "servisi": [
+      {
+        "service": "Lost d.o.o.",
+        "dobavljac": "Lost d.o.o.",
+        "address": "Ulica Kreše Golika 7, 10000 Zagreb",
+        "kontakt": "servis@lost.hr; 01/8000-720",
+        "napomena": "Slanje na HGSPOT trošak."
+      }
+    ],
+    "documents": [],
+    "website": null
+  },
+  {
+    "brand": "Anker",
+    "servisi": [
+      {
+        "service": "Lost d.o.o.",
+        "dobavljac": "Lost d.o.o.",
+        "address": "Ulica Kreše Golika 7, 10000 Zagreb",
+        "kontakt": "servis@lost.hr; 01/8000-720",
+        "napomena": "Slanje na HGSPOT trošak."
+      }
+    ],
+    "documents": [],
+    "website": null
+  }
+  {
+    "brand": "Verbatim",
+    "servisi": [
+      {
+        "service": "Lost d.o.o.",
+        "dobavljac": "Lost d.o.o.",
+        "address": "Ulica Kreše Golika 7, 10000 Zagreb",
+        "kontakt": "servis@lost.hr; 01/8000-720",
+        "napomena": "Slanje na HGSPOT trošak."
+      }
+    ],
+    "documents": [],
+    "website": null
   }
 ]
