@@ -680,5 +680,19 @@
     ],
     "documents": [],
     "website": null
+  },
+  {
+    "brand": "Xiaomi mobiteli",
+    "servisi": [
+      {
+        "service": "MMM Agramservis",
+        "dobavljac": "Mobis, Bijelić",
+        "address": "Samoborska cesta 145, 10090 Zagreb;",
+        "kontakt": "info@agramservis.hr; 01/2456-555",
+        "napomena": "Poslati mail za prikup uređaja."
+      }
+    ],
+    "documents": [],
+    "website": null
   }
 ]
