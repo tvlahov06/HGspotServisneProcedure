@@ -1505,5 +1505,28 @@
         "documents": []
       }
     ]
+  },
+  {
+    "brand": "Bosch",
+    "servisi": [
+      {
+        "service": "BSH kućanski uređaji d.o.o.",
+        "dobavljac": "BSH kućanski uređaji d.o.o.",
+        "address": "Ulica grada Vukovara 269F, 10000 Zagreb",
+        "kontakt": "reklamacije.pt@hr.bosch.com; Karla.Varjacic@hr.bosch.com; 098/316-422",
+        "napomena": "Poslati na mail sa njihovim zapisnikom",
+        "website": null,
+        "documents": []
+      },
+      {
+        "service": "Andabaka servis",
+        "dobavljac": "BSH kućanski uređaji d.o.o.",
+        "address": "Kopilica 21, 21000 Split",
+        "kontakt": "servis@andabaka.hr; 021/481-403",
+        "napomena": "Za prijavu kvara poslati mail Andabaka servisu da izađu na uvid.",
+        "website": null,
+        "documents": []
+      }
+    ]
   }
 ]
