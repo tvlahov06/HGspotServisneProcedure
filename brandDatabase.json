@@ -1389,5 +1389,28 @@
         "documents": []
       }
     ]
+  },
+  {
+    "brand": "Sony TV",
+    "servisi": [
+      {
+        "service": "ATV Electronic",
+        "dobavljac": "",
+        "address": "Ulica Braće Stipčića 5A, 51000 Rijeka",
+        "kontakt": "info@atvelectronic.hr",
+        "napomena": "Nalog preko ATV Electronic obrasca",
+        "website": "https://atvelectronic.hr/prijevoz",
+        "documents": []
+      },
+      {
+        "service": "Servis Kiki",
+        "dobavljac": "",
+        "address": "Draganjina 3, 21000 Split",
+        "kontakt": "josko.bitanga@st.t-com.hr; 021/567-964",
+        "napomena": "Kupac može sam odnijeti TV u servis",
+        "website": null,
+        "documents": []
+      }
+    ]
   }
 ]
