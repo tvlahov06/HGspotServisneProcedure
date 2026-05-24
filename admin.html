@@ -197,12 +197,17 @@
         .stat-number { font-size: 2.5em; font-weight: 700; color: #6B1A6B; }
         .stat-label { color: #888; font-size: 0.9em; margin-top: 5px; }
 
-        /* ===== AKCIJE ===== */
-        .action-bar {
+        /* ===== SEARCH + ACTION BAR ===== */
+        .search-action-bar {
             display: flex;
             gap: 12px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
+            margin-bottom: 12px;
+            align-items: center;
+        }
+
+        .search-action-bar .search-bar {
+            flex: 1;
+            margin-bottom: 0;
         }
 
         .btn-primary {
@@ -241,23 +246,27 @@
         }
 
         /* ===== BRAND LIST ===== */
-        .brand-list { display: flex; flex-direction: column; gap: 12px; }
-
-        .brand-card {
+        .brand-list {
             background: white;
             border-radius: 12px;
-            padding: 18px 22px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .brand-card {
+            padding: 13px 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.2s;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background 0.15s;
         }
 
-        .brand-card:hover { box-shadow: 0 5px 20px rgba(0,0,0,0.12); transform: translateY(-2px); }
-        .brand-card-info h3 { color: #6B1A6B; font-size: 1.1em; margin-bottom: 4px; }
-        .brand-card-info p { color: #888; font-size: 0.85em; }
-        .brand-card-actions { display: flex; gap: 8px; }
+        .brand-card:last-child { border-bottom: none; }
+        .brand-card:hover { background: #faf5fb; }
+        .brand-card-info h3 { color: #6B1A6B; font-size: 1em; margin-bottom: 2px; font-weight: 600; }
+        .brand-card-info p { color: #888; font-size: 0.82em; }
+        .brand-card-actions { display: flex; gap: 6px; flex-shrink: 0; }
 
         .btn-edit {
             background: #f3e5f5;
@@ -286,6 +295,63 @@
         }
 
         .btn-delete:hover { background: #ffcdd2; }
+
+        /* ===== TOOLBAR ===== */
+        .toolbar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .sort-select {
+            padding: 9px 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 0.9em;
+            background: white;
+            color: #444;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .sort-select:focus { border-color: #6B1A6B; }
+
+        .results-count {
+            color: white;
+            font-size: 0.85em;
+            opacity: 0.85;
+            margin-left: auto;
+        }
+
+        /* ===== PAGINACIJA ===== */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            background: white;
+            color: #6B1A6B;
+            border: 2px solid #e0e0e0;
+            padding: 7px 13px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.2s;
+            min-width: 36px;
+        }
+
+        .page-btn:hover { border-color: #9B2D8E; background: #f3e5f5; }
+        .page-btn.active { background: #6B1A6B; color: white; border-color: #6B1A6B; }
+        .page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
         /* ===== MODAL ===== */
         .modal-overlay {
@@ -519,6 +585,8 @@
 
         @media (max-width: 600px) {
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .search-action-bar { flex-direction: column; }
+            .search-action-bar .btn-primary { width: 100%; justify-content: center; }
             .admin-header { flex-direction: column; gap: 15px; text-align: center; }
             .modal { padding: 25px 20px; }
             .stat-number { font-size: 1.8em; }
@@ -597,22 +665,35 @@
         </div>
 
         <!-- Akcije -->
-        <div class="action-bar">
+        <!-- Pretraga + Dodaj Brand u jednom redu -->
+        <div class="search-action-bar">
+            <div class="search-bar">
+                <input
+                    type="text"
+                    id="adminSearch"
+                    placeholder="🔍  Pretraži po brandu ili servisu..."
+                    oninput="filterBrands()"
+                >
+            </div>
             <button class="btn-primary" id="addBrandBtn" onclick="openAddModal()">➕ Dodaj Brand</button>
         </div>
 
-        <!-- Pretraga -->
-        <div class="search-bar">
-            <input
-                type="text"
-                id="adminSearch"
-                placeholder="🔍  Pretraži brandove..."
-                oninput="filterBrands()"
-            >
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <select class="sort-select" id="sortSelect" onchange="filterBrands()">
+                <option value="unos_novo">Najnoviji unos</option>
+                <option value="unos_staro">Najstariji unos</option>
+                <option value="az">A → Z</option>
+                <option value="za">Z → A</option>
+            </select>
+            <span class="results-count" id="resultsCount"></span>
         </div>
 
         <!-- Brand lista -->
         <div class="brand-list" id="brandList"></div>
+
+        <!-- Paginacija -->
+        <div class="pagination" id="pagination"></div>
 
     </div>
 
@@ -881,21 +962,60 @@
         }
 
         // ===== RENDERIRANJE LISTE =====
-        function renderBrandList(filter = '') {
-            const list = document.getElementById('brandList');
-            const filtered = brandDatabase.filter(b =>
-                b.brand.toLowerCase().includes(filter.toLowerCase())
-            );
+        const PAGE_SIZE = 20;
+        let currentPage = 1;
+        let currentFilter = '';
 
+        function filterBrands() {
+            currentFilter = document.getElementById('adminSearch').value;
+            currentPage = 1;
+            renderBrandList();
+        }
+
+        function renderBrandList() {
+            const list = document.getElementById('brandList');
+            const pagination = document.getElementById('pagination');
+            const sortVal = document.getElementById('sortSelect').value;
+
+            // Filter - po brandu I po nazivu servisa
+            let filtered = brandDatabase.filter(b => {
+                const term = currentFilter.toLowerCase();
+                if (!term) return true;
+                if (b.brand.toLowerCase().includes(term)) return true;
+                if ((b.servisi || []).some(s => s.service && s.service.toLowerCase().includes(term))) return true;
+                return false;
+            });
+
+            // Sort
+            filtered.sort((a, b) => {
+                if (sortVal === 'az') return a.brand.localeCompare(b.brand, 'hr');
+                if (sortVal === 'za') return b.brand.localeCompare(a.brand, 'hr');
+                if (sortVal === 'unos_novo') return brandDatabase.indexOf(b) - brandDatabase.indexOf(a);
+                if (sortVal === 'unos_staro') return brandDatabase.indexOf(a) - brandDatabase.indexOf(b);
+                return 0;
+            });
+
+            // Rezultati count
+            document.getElementById('resultsCount').textContent =
+                filtered.length > 0 ? `${filtered.length} brand${filtered.length !== 1 ? 'a' : ''}` : '';
+
+            // Empty state
             if (filtered.length === 0) {
                 list.innerHTML = `
                     <div class="empty-state">
-                        <p>${filter ? '🔍 Nema rezultata za "' + filter + '"' : '📭 Baza je prazna. Dodaj prvi brand!'}</p>
+                        <p>${currentFilter ? '🔍 Nema rezultata za "' + currentFilter + '"' : '📭 Baza je prazna. Dodaj prvi brand!'}</p>
                     </div>`;
+                pagination.innerHTML = '';
                 return;
             }
 
-            list.innerHTML = filtered.map(brand => {
+            // Paginacija - pri pretrazi prikaži sve
+            const isSearching = currentFilter.trim() !== '';
+            const paginated = isSearching ? filtered : filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+            const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+
+            // Render lista
+            list.innerHTML = paginated.map(brand => {
                 const realIdx = brandDatabase.indexOf(brand);
                 const servisCount = (brand.servisi || []).length;
                 const docCount = (brand.documents || []).length;
@@ -911,10 +1031,36 @@
                         </div>
                     </div>`;
             }).join('');
+
+            // Render paginacija (samo ako nema pretrage)
+            if (!isSearching && totalPages > 1) {
+                let pages = '';
+
+                // Prethodna
+                pages += `<button class="page-btn" onclick="goToPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>‹</button>`;
+
+                // Brojevi stranica
+                for (let i = 1; i <= totalPages; i++) {
+                    if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
+                        pages += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
+                    } else if (i === currentPage - 3 || i === currentPage + 3) {
+                        pages += `<span style="color:white;padding:0 4px;">...</span>`;
+                    }
+                }
+
+                // Sljedeća
+                pages += `<button class="page-btn" onclick="goToPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>›</button>`;
+
+                pagination.innerHTML = pages;
+            } else {
+                pagination.innerHTML = '';
+            }
         }
 
-        function filterBrands() {
-            renderBrandList(document.getElementById('adminSearch').value);
+        function goToPage(page) {
+            currentPage = page;
+            renderBrandList();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // ===== MODAL - DODAJ =====
@@ -1075,7 +1221,7 @@
                 }
             }
 
-            renderBrandList(document.getElementById('adminSearch').value);
+            renderBrandList();
             updateStats();
         }
 
@@ -1099,7 +1245,7 @@
                 await loadDatabase(); // Vrati stanje
             }
 
-            renderBrandList(document.getElementById('adminSearch').value);
+            renderBrandList();
             updateStats();
         }
 
