@@ -442,5 +442,19 @@
     ],
     "documents": [],
     "website": null
+  },
+  {
+    "brand": "MeanIT",
+    "servisi": [
+      {
+        "service": "Intelcom d.o.o.",
+        "dobavljac": "Intelcom d.o.o.",
+        "address": "Zagrebačka cesta 145a, 10000 Zagreb",
+        "kontakt": "servis@intelkom.hr; servis@meanit.hr; 01/3865-888",
+        "napomena": "Poslati mail za prikup uređaja"
+      }
+    ],
+    "documents": [],
+    "website": null
   }
 ]
