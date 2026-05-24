@@ -952,5 +952,19 @@
         "documents": []
       }
     ]
+  },
+  {
+    "brand": "Brother printeri",
+    "servisi": [
+      {
+        "service": "Zagit sistemi d.o.o.",
+        "dobavljac": "Also Croatia, Msan",
+        "address": "Kalinovica 7, 10000 Zagreb",
+        "kontakt": "servis@zagit.hr; 01/619-1371",
+        "napomena": "Poslati mail za prikup uređaja",
+        "website": null,
+        "documents": []
+      }
+    ]
   }
 ]
