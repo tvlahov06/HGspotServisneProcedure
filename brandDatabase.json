@@ -807,5 +807,19 @@
         "documents": []
       }
     ]
+  },
+  {
+    "brand": "Kingston",
+    "servisi": [
+      {
+        "service": "ITS Intertrade d.o.o.",
+        "dobavljac": "Spinnaker distribucija d.o.o.",
+        "address": "Unska 2a, 10000 Zagreb",
+        "kontakt": "info@its-it.hr, tblaha@its-it.hr, bhrvoic@its-it.hr; 01/7002-476",
+        "napomena": "Poslati mail za prikup uređaja",
+        "website": null,
+        "documents": []
+      }
+    ]
   }
 ]
