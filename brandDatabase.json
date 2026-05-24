@@ -1463,5 +1463,19 @@
         "documents": []
       }
     ]
+  },
+  {
+    "brand": "Puro",
+    "servisi": [
+      {
+        "service": "HGSpot servis",
+        "dobavljac": "Smart Mobile Solution",
+        "address": "Ulica kneza Branimira 24, 10040 Zagreb - Dubrava",
+        "kontakt": "servis@hgspot.hr; 01/6611-511",
+        "napomena": "Slati prema HGspot servisu na daljnje rješavanje",
+        "website": null,
+        "documents": []
+      }
+    ]
   }
 ]
