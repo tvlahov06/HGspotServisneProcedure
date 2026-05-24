@@ -1280,5 +1280,19 @@
         "documents": []
       }
     ]
+  },
+  {
+    "brand": "Xiaomi TV",
+    "servisi": [
+      {
+        "service": "Supra Mea",
+        "dobavljac": "",
+        "address": "Maksimirska 129, 10000 Zagreb",
+        "kontakt": "info@supra-mea.hr; 01/2316-086",
+        "napomena": "Prikup uređaja preko web stranice",
+        "website": "https://supra-mea.hr/prikup-uredaja/",
+        "documents": []
+      }
+    ]
   }
 ]
