@@ -998,5 +998,19 @@
         "documents": []
       }
     ]
+  },
+  {
+    "brand": "Gainward",
+    "servisi": [
+      {
+        "service": "Also Croatia",
+        "dobavljac": "Also Croatia",
+        "address": "Zelena aleja 53, 10410 Velika Gorica",
+        "kontakt": "HRV.CS@also.com; 01/365-0777",
+        "napomena": "Ako je PP/KA Also, njima slati",
+        "website": null,
+        "documents": []
+      }
+    ]
   }
 ]
