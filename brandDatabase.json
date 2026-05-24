@@ -1210,5 +1210,19 @@
         "documents": []
       }
     ]
+  },
+  {
+    "brand": "Gorenje/Hisense MKA",
+    "servisi": [
+      {
+        "service": "MR servis",
+        "dobavljac": "",
+        "address": "Dugoselska 5, 10372 Rugvica",
+        "kontakt": "info@mrservis.hr; 01/640-1111",
+        "napomena": "Poslati mail za prikup",
+        "website": null,
+        "documents": []
+      }
+    ]
   }
 ]
