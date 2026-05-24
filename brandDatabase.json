@@ -1477,5 +1477,19 @@
         "documents": []
       }
     ]
+  },
+  {
+    "brand": "Hammer mobiteli",
+    "servisi": [
+      {
+        "service": "Tech Doctor d.o.o.",
+        "dobavljac": "Dradar",
+        "address": "Radnička cesta 1a, 10000 Zagreb",
+        "kontakt": "info@techdoctor.hr; 01/6188-513",
+        "napomena": "Poslati mail za prikup uređaja.",
+        "website": null,
+        "documents": []
+      }
+    ]
   }
 ]
