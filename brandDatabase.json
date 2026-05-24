@@ -360,11 +360,20 @@
         "dobavljac": "ASBISC-CR d.o.o.",
         "address": "Rakitnica 3, 10000 Zagreb",
         "kontakt": "servis@asbis.hr; 01/600-9935",
-        "napomena": "Ne primaju stranke, šalje se sve u Asbis ako su dobavljač na njihov trošak - Overseas"
+        "napomena": "Ne primaju stranke, šalje se sve u Asbis ako su dobavljač na njihov trošak - Overseas",
+        "website": null,
+        "documents": []
+      },
+      {
+        "service": "Also Croatia",
+        "dobavljac": "Also Croatia",
+        "address": "Zelena aleja 53, 10410 Velika Gorica",
+        "kontakt": "HRV.CS@also.com; 01/365-0777",
+        "napomena": "Ako je PP/KA Also, njima slati",
+        "website": null,
+        "documents": []
       }
-    ],
-    "documents": [],
-    "website": null
+    ]
   },
   {
     "brand": "Streetz",
