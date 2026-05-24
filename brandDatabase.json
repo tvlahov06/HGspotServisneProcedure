@@ -1180,5 +1180,19 @@
         "documents": []
       }
     ]
+  },
+  {
+    "brand": "OFA",
+    "servisi": [
+      {
+        "service": "Tehnocentar d.o.o.",
+        "dobavljac": "Tehnocentar d.o.o.",
+        "address": "Prilaz Ivana Visina 7, 10000 Zagreb",
+        "kontakt": "servis@tehnocentar.hr; 01/6553-804",
+        "napomena": "Na mail se šalje opis kvara i račun, te servis osigurava prikup uređaja i slanje na servis",
+        "website": null,
+        "documents": []
+      }
+    ]
   }
 ]
