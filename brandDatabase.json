@@ -1352,5 +1352,19 @@
         ]
       }
     ]
+  },
+  {
+    "brand": "Beko",
+    "servisi": [
+      {
+        "service": "Andabaka servis",
+        "dobavljac": "Beko",
+        "address": "Kopilica 21, 21000 Split",
+        "kontakt": "servis@andabaka.hr; 021/481-403",
+        "napomena": "poslati mail sa dokumentacijom na support-hr@beko.com, Beko javlja dalje",
+        "website": null,
+        "documents": []
+      }
+    ]
   }
 ]
