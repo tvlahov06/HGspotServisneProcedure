@@ -1224,5 +1224,19 @@
         "documents": []
       }
     ]
+  },
+  {
+    "brand": "Gorenje VKA",
+    "servisi": [
+      {
+        "service": "Adiumenta servis",
+        "dobavljac": "Gorenje",
+        "address": "Kopilica 22, 21000 Split",
+        "kontakt": "adiumenta@gmail.com; 021/571-239",
+        "napomena": "Kupac se prvo javlja na Gorenje 01/2415-050",
+        "website": "https://hr.gorenje.com/service-claim",
+        "documents": []
+      }
+    ]
   }
 ]
