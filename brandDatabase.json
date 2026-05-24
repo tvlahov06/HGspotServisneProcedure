@@ -666,5 +666,19 @@
     ],
     "documents": [],
     "website": null
+  },
+  {
+    "brand": "JBL",
+    "servisi": [
+      {
+        "service": "KBZ electronic",
+        "dobavljac": "Lost d.o.o., Dacco d.o.o., Big Partner",
+        "address": "Trnjanska 117, 10000 Zagreb",
+        "kontakt": "kbz@kbz-electronic.hr; 01/615-0101",
+        "napomena": "Slanje OVERSEASOM na trošak primatelja - ISKLJUČIVO SAMO UNUTAR JAMSTVA"
+      }
+    ],
+    "documents": [],
+    "website": null
   }
 ]
