@@ -1238,5 +1238,19 @@
         "documents": []
       }
     ]
+  },
+  {
+    "brand": "Hisense VKA",
+    "servisi": [
+      {
+        "service": "Adiumenta servis",
+        "dobavljac": "Gorenje",
+        "address": "Kopilica 22, 21000 Split",
+        "kontakt": "adiumenta@gmail.com; 021/571-239",
+        "napomena": "Kupac se prvo javlja na Hisense 01/2415-050",
+        "website": "https://hr.hisense.com/servis",
+        "documents": []
+      }
+    ]
   }
 ]
