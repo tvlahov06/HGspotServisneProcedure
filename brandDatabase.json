@@ -1491,5 +1491,19 @@
         "documents": []
       }
     ]
+  },
+  {
+    "brand": "Botslab Kids",
+    "servisi": [
+      {
+        "service": "Bijelić Co d.o.o.",
+        "dobavljac": "Bijelić Co d.o.o.",
+        "address": "Sv. L. B. Mandica 13a, 31000 Osijek",
+        "kontakt": "servis@bijelic-co.hr; 031/226-500",
+        "napomena": "Poslati mail za prikup ili najava na website",
+        "website": "https://www.openrma.com/portal/form.php?config=bijelic&lang=hr",
+        "documents": []
+      }
+    ]
   }
 ]
