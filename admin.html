@@ -372,6 +372,20 @@
         .doc-upload-text { font-size: 0.95em; font-weight: 600; color: #6B1A6B; }
         .doc-upload-hint { font-size: 0.8em; color: #aaa; margin-top: 3px; }
         .doc-existing-info { font-size: 0.85em; color: #555; padding: 8px 0 4px; }
+        .servis-docs-section { margin-top: 14px; padding-top: 14px; border-top: 1px dashed #e0e0e0; }
+        .servis-docs-label { font-weight: 600; color: #444; font-size: 0.9em; margin-bottom: 8px; }
+        .document-block { margin-bottom: 8px; }
+        .doc-existing-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f3e5f5;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.88em;
+            color: #6B1A6B;
+            font-weight: 500;
+        }
 
         /* ===== MODAL ===== */
         .modal-overlay {
@@ -733,17 +747,6 @@
                 <button class="btn-add-servis" onclick="addServisBlock()">➕ Dodaj još jedan servis</button>
             </div>
 
-            <div class="servisi-section">
-                <h3>📄 Dokumenti</h3>
-                <div id="documentsContainer"></div>
-                <button class="btn-add-servis" onclick="addDocumentBlock()">➕ Dodaj dokument</button>
-            </div>
-
-            <div class="form-group">
-                <label>🔗 Website (opcionalno)</label>
-                <input type="text" id="brandWebsite" placeholder="https://www.example.com">
-            </div>
-
             <div class="modal-actions">
                 <button class="btn-save" id="saveBtn" onclick="saveBrand()">💾 Spremi Brand</button>
                 <button class="btn-cancel" onclick="closeModal()">Odustani</button>
@@ -995,7 +998,12 @@
             document.getElementById('statBrands').textContent = brandDatabase.length;
             let totalServisi = 0, totalDocs = 0, totalWebsites = 0;
             brandDatabase.forEach(b => {
-                totalServisi += (b.servisi || []).length;
+                (b.servisi || []).forEach(s => {
+                    totalServisi++;
+                    totalDocs += (s.documents || []).length;
+                    if (s.website) totalWebsites++;
+                });
+                // Backward compatibility
                 totalDocs += (b.documents || []).length;
                 if (b.website) totalWebsites++;
             });
@@ -1061,7 +1069,12 @@
             list.innerHTML = paginated.map(brand => {
                 const realIdx = brandDatabase.indexOf(brand);
                 const servisCount = (brand.servisi || []).length;
-                const docCount = (brand.documents || []).length;
+                let docCount = (brand.documents || []).length;
+                let websiteCount = brand.website ? 1 : 0;
+                (brand.servisi || []).forEach(s => {
+                    docCount += (s.documents || []).length;
+                    if (s.website) websiteCount++;
+                });
                 const servisiNazivi = (brand.servisi || [])
                     .filter(s => s.service)
                     .map(s => `<span class="servis-naziv-tag">${s.service}</span>`)
@@ -1116,9 +1129,7 @@
             editingIndex = -1;
             document.getElementById('modalTitle').textContent = '➕ Dodaj Novi Brand';
             document.getElementById('brandName').value = '';
-            document.getElementById('brandWebsite').value = '';
             document.getElementById('servisiContainer').innerHTML = '';
-            document.getElementById('documentsContainer').innerHTML = '';
             addServisBlock();
             document.getElementById('modalOverlay').classList.add('active');
         }
@@ -1129,11 +1140,8 @@
             const brand = brandDatabase[idx];
             document.getElementById('modalTitle').textContent = '✏️ Uredi Brand';
             document.getElementById('brandName').value = brand.brand;
-            document.getElementById('brandWebsite').value = brand.website || '';
             document.getElementById('servisiContainer').innerHTML = '';
             (brand.servisi || []).forEach(s => addServisBlock(s));
-            document.getElementById('documentsContainer').innerHTML = '';
-            (brand.documents || []).forEach(d => addDocumentBlock(d));
             document.getElementById('modalOverlay').classList.add('active');
         }
 
@@ -1145,12 +1153,14 @@
         function addServisBlock(data = null) {
             const container = document.getElementById('servisiContainer');
             const idx = container.children.length + 1;
+            const servisId = 'servis_' + Date.now() + '_' + Math.random().toString(36).substr(2,5);
             const div = document.createElement('div');
             div.className = 'servis-block';
+            div.dataset.servisId = servisId;
             div.innerHTML = `
                 <div class="servis-block-header">
                     <span>🏢 Servis ${idx}</span>
-                    <button class="btn-remove-servis" onclick="removeBlock(this)">✕ Ukloni</button>
+                    <button class="btn-remove-servis" onclick="removeServisBlock(this)">✕ Ukloni</button>
                 </div>
                 <div class="form-group">
                     <label>Naziv servisa</label>
@@ -1171,13 +1181,27 @@
                 <div class="form-group">
                     <label>Napomena</label>
                     <input type="text" class="servis-napomena" placeholder="Slanje na trošak primatelja" value="${data ? escHtml(data.napomena) : ''}">
+                </div>
+                <div class="form-group">
+                    <label>🔗 Website</label>
+                    <input type="text" class="servis-website" placeholder="https://www.example.com" value="${data ? escHtml(data.website || '') : ''}">
+                </div>
+                <div class="servis-docs-section">
+                    <div class="servis-docs-label">📄 Dokumenti</div>
+                    <div class="servis-docs-container" id="${servisId}_docs"></div>
+                    <button class="btn-add-servis" style="margin-top:8px;" onclick="addDocumentToServis('${servisId}')">➕ Dodaj dokument</button>
                 </div>`;
             container.appendChild(div);
             renumberServisi();
+
+            // Ako ima postojeće dokumente (edit mode)
+            if (data && data.documents) {
+                data.documents.forEach(doc => addDocumentToServis(servisId, doc));
+            }
         }
 
-        function removeBlock(btn) {
-            btn.closest('.servis-block, .document-block').remove();
+        function removeServisBlock(btn) {
+            btn.closest('.servis-block').remove();
             renumberServisi();
         }
 
@@ -1187,31 +1211,26 @@
             });
         }
 
-        // ===== DOKUMENT BLOK =====
-        function addDocumentBlock(data = null) {
-            const container = document.getElementById('documentsContainer');
+        // ===== DOKUMENT PO SERVISU =====
+        function addDocumentToServis(servisId, data = null) {
+            const container = document.getElementById(`${servisId}_docs`);
+            if (!container) return;
             const blockId = 'doc_' + Date.now() + '_' + Math.random().toString(36).substr(2,5);
             const div = document.createElement('div');
-            div.className = 'servis-block document-block';
+            div.className = 'document-block';
             div.dataset.blockId = blockId;
 
-            // Ako je postojeći dokument (edit mode) - prikaži naziv i putanju
             if (data) {
                 div.innerHTML = `
-                    <div class="servis-block-header">
-                        <span>📄 ${escHtml(data.name)}</span>
-                        <button class="btn-remove-servis" onclick="removeBlock(this)">✕ Ukloni</button>
+                    <div class="doc-existing-row">
+                        <span>📎 ${escHtml(data.name)}</span>
+                        <button class="btn-remove-servis" onclick="this.closest('.document-block').remove()">✕</button>
                     </div>
-                    <p class="doc-existing-info">📎 Postojeći dokument · <span style="color:#888;font-size:0.9em;">${escHtml(data.url)}</span></p>
                     <input type="hidden" class="doc-naziv" value="${escHtml(data.name)}">
                     <input type="hidden" class="doc-url" value="${escHtml(data.url)}">
                     <input type="hidden" class="doc-file-content" value="">`;
             } else {
                 div.innerHTML = `
-                    <div class="servis-block-header">
-                        <span>📄 Dokument</span>
-                        <button class="btn-remove-servis" onclick="removeBlock(this)">✕ Ukloni</button>
-                    </div>
                     <div class="doc-upload-area" onclick="document.getElementById('${blockId}_input').click()">
                         <div class="doc-upload-icon">📎</div>
                         <div class="doc-upload-text">Klikni za odabir dokumenta</div>
@@ -1222,7 +1241,6 @@
                     <input type="hidden" class="doc-url" value="">
                     <input type="hidden" class="doc-file-content" value="">`;
             }
-
             container.appendChild(div);
         }
 
@@ -1263,6 +1281,7 @@
 
             const servisiBlocks = document.querySelectorAll('#servisiContainer .servis-block');
             const servisi = [];
+            const filesToUpload = [];
 
             servisiBlocks.forEach(block => {
                 const naziv = block.querySelector('.servis-naziv').value.trim();
@@ -1270,30 +1289,27 @@
                 const adresa = block.querySelector('.servis-adresa').value.trim();
                 const kontakt = block.querySelector('.servis-kontakt').value.trim();
                 const napomena = block.querySelector('.servis-napomena').value.trim();
-                servisi.push({ service: naziv, dobavljac, address: adresa, kontakt, napomena });
+                const website = block.querySelector('.servis-website').value.trim() || null;
+
+                // Dokumenti po servisu
+                const documents = [];
+                block.querySelectorAll('.document-block').forEach(docBlock => {
+                    const docNaziv = docBlock.querySelector('.doc-naziv').value.trim();
+                    const docUrl = docBlock.querySelector('.doc-url').value.trim();
+                    const docContent = docBlock.querySelector('.doc-file-content').value;
+                    if (docNaziv && docUrl) {
+                        documents.push({ name: docNaziv, url: docUrl });
+                        if (docContent) filesToUpload.push({ name: docNaziv, url: docUrl, content: docContent });
+                    }
+                });
+
+                servisi.push({ service: naziv, dobavljac, address: adresa, kontakt, napomena, website, documents });
             });
 
             if (servisi.length === 0) { showToast('❌ Dodaj barem jedan servis!', 'error'); return; }
 
-            const docBlocks = document.querySelectorAll('#documentsContainer .document-block');
-            const documents = [];
-            const filesToUpload = [];
-
-            docBlocks.forEach(block => {
-                const naziv = block.querySelector('.doc-naziv').value.trim();
-                const url = block.querySelector('.doc-url').value.trim();
-                const fileContent = block.querySelector('.doc-file-content').value;
-                if (naziv && url) {
-                    documents.push({ name: naziv, url });
-                    // Ako ima file content - treba uploadati
-                    if (fileContent) {
-                        filesToUpload.push({ name: naziv, url, content: fileContent });
-                    }
-                }
-            });
-
-            const website = document.getElementById('brandWebsite').value.trim() || null;
-            const brandObj = { brand: name, servisi, documents, website };
+            const website = null; // website je sada po servisu
+            const brandObj = { brand: name, servisi };
 
             if (editingIndex === -1) {
                 brandDatabase.push(brandObj);
