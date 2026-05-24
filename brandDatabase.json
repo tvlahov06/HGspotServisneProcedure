@@ -470,5 +470,47 @@
     ],
     "documents": [],
     "website": null
+  },
+  {
+    "brand": "Maxmobile",
+    "servisi": [
+      {
+        "service": "Dradar d.o.o.",
+        "dobavljac": "Dradar d.o.o.",
+        "address": "Puževa 13, 1000 Zagreb",
+        "kontakt": "servis@dradar.hr; 01/6594-399",
+        "napomena": "Poslati mail za prikup uređaja"
+      }
+    ],
+    "documents": [],
+    "website": null
+  },
+  {
+    "brand": "Havit",
+    "servisi": [
+      {
+        "service": "Dradar d.o.o.",
+        "dobavljac": "Dradar d.o.o.",
+        "address": "Puževa 13, 1000 Zagreb",
+        "kontakt": "servis@dradar.hr; 01/6594-399",
+        "napomena": "Poslati mail za prikup uređaja"
+      }
+    ],
+    "documents": [],
+    "website": null
+  },
+  {
+    "brand": "Gamenote",
+    "servisi": [
+      {
+        "service": "Dradar d.o.o.",
+        "dobavljac": "Dradar d.o.o.",
+        "address": "Puževa 13, 1000 Zagreb",
+        "kontakt": "servis@dradar.hr; 01/6594-399",
+        "napomena": "Poslati mail za prikup uređaja"
+      }
+    ],
+    "documents": [],
+    "website": null
   }
 ]
