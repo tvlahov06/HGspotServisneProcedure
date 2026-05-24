@@ -266,6 +266,9 @@
         .brand-card:hover { background: #faf5fb; }
         .brand-card-info h3 { color: #6B1A6B; font-size: 1em; margin-bottom: 2px; font-weight: 600; }
         .brand-card-info p { color: #888; font-size: 0.82em; }
+        .servisi-nazivi { margin-top: 4px; display: flex; flex-wrap: wrap; gap: 4px; }
+        .servis-naziv-tag { color: #6B1A6B; font-size: 1em; font-weight: 600; }
+        .servis-naziv-tag:not(:last-child)::after { content: ','; margin-right: 2px; }
         .brand-card-actions { display: flex; gap: 6px; flex-shrink: 0; }
 
         .btn-edit {
@@ -1019,11 +1022,16 @@
                 const realIdx = brandDatabase.indexOf(brand);
                 const servisCount = (brand.servisi || []).length;
                 const docCount = (brand.documents || []).length;
+                const servisiNazivi = (brand.servisi || [])
+                    .filter(s => s.service)
+                    .map(s => `<span class="servis-naziv-tag">${s.service}</span>`)
+                    .join('');
                 return `
                     <div class="brand-card">
                         <div class="brand-card-info">
                             <h3>${brand.brand}</h3>
                             <p>${servisCount} servis${servisCount !== 1 ? 'a' : ''} · ${docCount} dokument${docCount !== 1 ? 'a' : ''} · ${brand.website ? '1' : '0'} website</p>
+                            ${servisiNazivi ? `<div class="servisi-nazivi">${servisiNazivi}</div>` : ''}
                         </div>
                         <div class="brand-card-actions">
                             <button class="btn-edit" onclick="openEditModal(${realIdx})">✏️ Uredi</button>
