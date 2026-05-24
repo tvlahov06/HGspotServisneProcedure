@@ -568,5 +568,19 @@
     ],
     "documents": [],
     "website": null
+  },
+  {
+    "brand": "Xilence",
+    "servisi": [
+      {
+        "service": "Lost d.o.o.",
+        "dobavljac": "Lost d.o.o.",
+        "address": "Ulica Kreše Golika 7, 10000 Zagreb",
+        "kontakt": "servis@lost.hr; 01/8000-720",
+        "napomena": "Slanje na HGSPOT trošak."
+      }
+    ],
+    "documents": [],
+    "website": null
   }
 ]
