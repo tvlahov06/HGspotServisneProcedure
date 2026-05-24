@@ -1263,7 +1263,12 @@
         "kontakt": "info@supra-mea.hr; 01/2316-086",
         "napomena": "Prikup uređaja preko web stranice",
         "website": "https://supra-mea.hr/prikup-uredaja/",
-        "documents": []
+        "documents": [
+          {
+            "name": "Upute za pakiranje televizora za slanje.pdf",
+            "url": "documents/Upute za pakiranje televizora za slanje.pdf"
+          }
+        ]
       }
     ]
   },
