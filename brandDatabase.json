@@ -526,5 +526,19 @@
     ],
     "documents": [],
     "website": null
+  },
+  {
+    "brand": "Sbox",
+    "servisi": [
+      {
+        "service": "Šmit electronic d.o.o.",
+        "dobavljac": "Šmit electronic d.o.o.",
+        "address": "Metanska 1, 44320 Kutina",
+        "kontakt": "servis@smit-electronic.hr\"; 044/680-704",
+        "napomena": "Poslati mail za prikup uređaja."
+      }
+    ],
+    "documents": [],
+    "website": null
   }
 ]
