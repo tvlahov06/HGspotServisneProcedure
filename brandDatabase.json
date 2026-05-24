@@ -456,5 +456,19 @@
     ],
     "documents": [],
     "website": null
+  },
+  {
+    "brand": "Maxline",
+    "servisi": [
+      {
+        "service": "Dradar d.o.o.",
+        "dobavljac": "Dradar d.o.o.",
+        "address": "Puževa 13, 1000 Zagreb",
+        "kontakt": "servis@dradar.hr; 01/6594-399",
+        "napomena": "Poslati mail za prikup uređaja"
+      }
+    ],
+    "documents": [],
+    "website": null
   }
 ]
